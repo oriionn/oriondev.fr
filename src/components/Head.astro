@@ -1,8 +1,16 @@
-<div id="head" class="container">
+---
+interface Props {
+    lang: string;
+}
+
+const { lang } = Astro.props;
+---
+
+<div id="head" class="container" data-current-lang={lang}>
     <div>
-        <a href="/?fr">fr</a>
+        <a href="/fr">fr</a>
         <span>|</span>
-        <a href="/?en">en</a>
+        <a href="/en">en</a>
     </div>
 </div>
 

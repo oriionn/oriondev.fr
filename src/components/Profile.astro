@@ -1,23 +1,20 @@
 ---
 import { Image } from "astro:assets";
 import avatar from "../assets/avatar.png";
+import type { Translation } from "../content.config";
+
+interface Props {
+    translation: Translation;
+}
+
+const { translation } = Astro.props;
 ---
 
 <div class="container" id="profile">
     <Image src={avatar} alt="My profile picture" class="avatar" />
-    <h1>Hi ! I'm Orion !</h1>
+    <h1>{translation.title}</h1>
     <p>
-        Je m'appelle Emilien, mais je suis également connu sous le pseudonyme
-        "Orion". Actuellement en Terminale, j’ai découvert le développement à
-        l’âge de 8 ans, ce qui m’a rapidement passionné pour l’informatique dans
-        son ensemble. Autodidacte, je me spécialise aujourd’hui dans le
-        développement back-end, principalement en TypeScript, tout en explorant
-        également le Golang et le C (ou encore d'autres langage). Je participe
-        régulièrement à des CTF et des hackathons, la cybersécurité étant un
-        domaine qui m’attire particulièrement. Par ailleurs, je m'intéresse
-        aussi à l’électronique, un autre champ que j’explore avec enthousiasme.
-        Enfin, la politique fait partie des sujets qui me passionnent et que je
-        suis de près.
+        {translation.description}
     </p>
 </div>
 

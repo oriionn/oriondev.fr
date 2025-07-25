@@ -21,11 +21,28 @@ const events = defineCollection({
     }),
 });
 
-const translations = defineCollection({
-    loader: glob({ pattern: "**/*.json", base: "./content/translations" }),
-    schema: z.object({
-        description: z.string(),
+const translationSchema = z.object({
+    title: z.string(),
+    description: z.string(),
+    headings: z.object({
+        projects: z.string(),
+        personal_projects: z.string(),
+        events: z.string(),
+        findme: z.string(),
     }),
+    projects: z.object({
+        currently: z.string(),
+        past: z.string(),
+        personal: z.string(),
+    }),
+    events: z.string(),
 });
 
-export const collections = { projects, events };
+const translations = defineCollection({
+    loader: glob({ pattern: "**/*.json", base: "./content/translations" }),
+    schema: translationSchema,
+});
+
+export type Translation = z.infer<typeof translationSchema>;
+
+export const collections = { projects, events, translations };

@@ -1,10 +1,17 @@
 ---
 import Twitter from "./icons/twitter.astro";
 import Github from "./icons/github.astro";
+import type { Translation } from "../content.config";
+
+interface Props {
+    translation: Translation;
+}
+
+const { translation } = Astro.props;
 ---
 
 <div class="container" id="findme">
-    <h2>Find me on</h2>
+    <h2>{translation.headings.findme}</h2>
     <div class="socials">
         <a href="https://x.com/orion_offi">
             <Twitter />

@@ -1,3 +1,16 @@
 {
-    "description": "UwU"
+    "title": "Hi ! I'm Orion !",
+    "description": "My name is Emilien, but I'm also known by the pseudonym \"Orion\". Currently in my final year of high school, I discovered development at the age of 8, which quickly made me passionate about IT as a whole. Self-taught, I now specialize in back-end development, mainly in TypeScript, while also exploring Golang and C (or other languages). I regularly take part in CTFs and hackathons, cybersecurity being an area that particularly appeals to me. I'm also interested in electronics, another field I'm enthusiastically exploring. Finally, politics is one of the subjects that fascinates me and that I follow closely.",
+    "headings": {
+        "projects": "Projects",
+        "personal_projects": "Personal projects",
+        "events": "Events (CTF, hackathons, etc)",
+        "findme": "Find me on"
+    },
+    "projects": {
+        "currently": "I'm currently working at...",
+        "past": "In the past, I've worked at...",
+        "personal": "In my spare time, I have developed a few personal projects, such as : "
+    },
+    "events": "I also take part in CTFs, hackathons and other such events. "
 }

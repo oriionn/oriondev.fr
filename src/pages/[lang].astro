@@ -1,0 +1,39 @@
+---
+import type { GetStaticPaths } from "astro";
+import { getCollection } from "astro:content";
+
+import Head from "../components/Head.astro";
+import Profile from "../components/Profile.astro";
+import Projects from "../components/Projects.astro";
+import Events from "../components/Events.astro";
+import Layout from "../layouts/Layout.astro";
+import FindMe from "../components/FindMe.astro";
+
+export const getStaticPaths = (async () => {
+    const translations = await getCollection("translations");
+    return translations.map((translation) => ({
+        params: { lang: translation.id },
+    }));
+}) satisfies GetStaticPaths;
+
+const translations = await getCollection("translations");
+
+const { lang } = Astro.params;
+const translation = translations.filter(
+    (translation) => translation.id === lang,
+)[0].data;
+---
+
+<Layout>
+    <Head lang={lang} />
+    <Profile translation={translation} />
+    <Projects translation={translation} />
+    <Events translation={translation} />
+    <FindMe translation={translation} />
+</Layout>
+
+<script>
+    const head = document.getElementById("head");
+    let currentLang = head?.getAttribute("data-current-lang");
+    localStorage.setItem("lang", currentLang ?? "en");
+</script>
