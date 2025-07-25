@@ -13,20 +13,27 @@ const translations = (await getCollection("translations")).map(
 </Layout>
 
 <script>
+    const translationsEl = document.getElementById("translations");
+    const translations = JSON.parse(
+        translationsEl?.getAttribute("data-translations") ?? "[]",
+    );
+
     function redirectToLanguage(lang: string) {
         window.location.href = `/${lang}`;
     }
 
+    function getDefaultLanguage() {
+        let lang = navigator.language.slice(0, 2).toLowerCase();
+        if (translations.includes(lang)) return lang;
+        return "en";
+    }
+
     function redirect() {
         let storedLang = localStorage.getItem("lang");
-        if (!storedLang) return redirectToLanguage("en");
+        if (!storedLang) return redirectToLanguage(getDefaultLanguage());
 
-        const translationsEl = document.getElementById("translations");
-        const translations = JSON.parse(
-            translationsEl?.getAttribute("data-translations") ?? "[]",
-        );
-
-        if (!translations.includes(storedLang)) return redirectToLanguage("en");
+        if (!translations.includes(storedLang))
+            return redirectToLanguage(getDefaultLanguage());
         redirectToLanguage(storedLang);
     }
 

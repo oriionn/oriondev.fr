@@ -1,0 +1,85 @@
+---
+import type { GetStaticPaths } from "astro";
+import { getCollection } from "astro:content";
+import { readdirSync } from "fs";
+import Layout from "../../../layouts/Layout.astro";
+import { PDFViewer } from "../../../components/PDF";
+import { getTranslation } from "../../../utils/translation";
+
+export const getStaticPaths = (async () => {
+    const languages = (await getCollection("translations")).map(
+        (translation) => translation.id,
+    );
+    let certificates = readdirSync("public/certificates").map((certificate) =>
+        certificate.split(".").slice(0, -1).join("."),
+    );
+
+    let paths: { params: { lang: string; certificate: string } }[] = [];
+
+    languages.forEach((lang) => {
+        certificates.forEach((certificate) => {
+            paths.push({ params: { lang, certificate } });
+        });
+    });
+
+    return paths;
+}) satisfies GetStaticPaths;
+
+const { certificate, lang } = Astro.params;
+const translation = await getTranslation(lang);
+---
+
+<Layout>
+    <a href={`/${lang}`} id="return">{translation.viewer.return}</a>
+    <a
+        href={`/certificates/${certificate}.pdf`}
+        download={`orion_${certificate}.pdf`}
+        id="download">{translation.viewer.download}</a
+    >
+
+    <PDFViewer file={`/certificates/${certificate}.pdf`} client:load />
+</Layout>
+
+<style>
+    :global(body) {
+        justify-content: center;
+    }
+
+    :global(#pdf-reader canvas) {
+        border-radius: 20px;
+        width: 60vw;
+    }
+
+    @media screen and (max-width: 700px) {
+        :global(#pdf-reader canvas) {
+            width: 80vw;
+        }
+    }
+
+    @media screen and (max-width: 400px) {
+        :global(#pdf-reader canvas) {
+            width: 90vw;
+        }
+    }
+
+    @media screen and (max-width: 300px) {
+        :global(#pdf-reader canvas) {
+            width: calc(90vw - 20px);
+        }
+    }
+
+    #download,
+    #return {
+        position: fixed;
+        font-size: 15px;
+        top: 10px;
+    }
+
+    #download {
+        right: 20px;
+    }
+
+    #return {
+        left: 10px;
+    }
+</style>

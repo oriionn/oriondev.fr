@@ -35,7 +35,14 @@ const translationSchema = z.object({
         past: z.string(),
         personal: z.string(),
     }),
-    events: z.string(),
+    events: z.object({
+        events: z.string(),
+        certificate: z.string(),
+    }),
+    viewer: z.object({
+        return: z.string(),
+        download: z.string(),
+    }),
 });
 
 const translations = defineCollection({

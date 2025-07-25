@@ -12,5 +12,12 @@
         "past": "In the past, I've worked at...",
         "personal": "In my spare time, I have developed a few personal projects, such as : "
     },
-    "events": "I also take part in CTFs, hackathons and other such events. "
+    "events": {
+        "events": "I also take part in CTFs, hackathons and other such events.",
+        "certificate": "Certificate"
+    },
+    "viewer": {
+        "download": "Download",
+        "return": "Back to home"
+    }
 }

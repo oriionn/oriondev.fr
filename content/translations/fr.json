@@ -12,5 +12,12 @@
         "past": "Dans le passé, je travaillais chez...",
         "personal": "Dans mon temps libre, je développe des projets personnels, comme : "
     },
-    "events": "Je participe également à des CTFs, des hackathons ou d'autres évènements."
+    "events": {
+        "events": "Je participe également à des CTFs, des hackathons ou d'autres évènements.",
+        "certificate": "Certificat"
+    },
+    "viewer": {
+        "download": "Télécharger",
+        "return": "Retour"
+    }
 }
