@@ -1,0 +1,34 @@
+---
+import Twitter from "./icons/twitter.astro";
+import Github from "./icons/github.astro";
+---
+
+<div class="container" id="findme">
+    <h2>Find me on</h2>
+    <div class="socials">
+        <a href="https://x.com/orion_offi">
+            <Twitter />
+        </a>
+        <a href="https://github.com/oriionn">
+            <Github />
+        </a>
+    </div>
+</div>
+
+<style>
+    #findme {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        padding-bottom: 20px;
+    }
+
+    a {
+        border: none;
+    }
+
+    .socials {
+        margin-left: 15px;
+        margin-top: 5px;
+    }
+</style>

@@ -1,0 +1,76 @@
+---
+import { getCollection } from "astro:content";
+
+const projects = await getCollection("projects");
+
+const currentProjects = projects
+    .filter((project) => project.data.type === "pro_current")
+    .map((project) => project.data);
+
+const pastProjects = projects
+    .filter((project) => project.data.type === "pro_past")
+    .map((project) => project.data);
+
+const personalProjects = projects
+    .filter((project) => project.data.type === "personal")
+    .map((project) => project.data);
+---
+
+<div class="container" id="projects">
+    <h2>Projects</h2>
+    <p>I'm currently working at...</p>
+    <ul>
+        {
+            currentProjects.map((project) => (
+                <li>
+                    <a href={project.link} target="_blank">
+                        <span>@{project.name}</span>
+                    </a>
+                    <span>({project.category})</span>
+                </li>
+            ))
+        }
+    </ul>
+
+    <p>In the past, I've worked at...</p>
+    <ul>
+        {
+            pastProjects.map((project) => (
+                <li>
+                    <a href={project.link} target="_blank">
+                        <span>@{project.name}</span>
+                    </a>
+                    <span>({project.category})</span>
+                </li>
+            ))
+        }
+    </ul>
+
+    <h3>Personal projects</h3>
+    <p class="spare-time">
+        In my spare time, I have developed a few personal projects, such as :
+    </p>
+    <ul>
+        {
+            personalProjects.map((project) => (
+                <li>
+                    <a href={project.link} target="_blank">
+                        <span>{project.name}</span>
+                    </a>
+                    <span>({project.category})</span>
+                </li>
+            ))
+        }
+    </ul>
+</div>
+
+<style>
+    h1,
+    h2 {
+        margin: 0 !important;
+    }
+
+    .spare-time {
+        margin-top: 5px !important;
+    }
+</style>

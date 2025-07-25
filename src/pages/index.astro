@@ -1,11 +1,34 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import Head from "../components/Head.astro";
+import Profile from "../components/Profile.astro";
+import Projects from "../components/Projects.astro";
+import Events from "../components/Events.astro";
+import Layout from "../layouts/Layout.astro";
+import FindMe from "../components/FindMe.astro";
 ---
 
 <Layout>
-	<Welcome />
+    <Head />
+    <Profile />
+    <Projects />
+    <Events />
+    <FindMe />
 </Layout>
+
+<script>
+    import { Language } from "../models/language";
+
+    let paramsString = window.location.search;
+    let searchParams = new URLSearchParams(paramsString);
+
+    if (searchParams.get("fr") !== null) {
+        localStorage.setItem("lang", Language.French.toString());
+        window.location.search = "";
+    } else if (searchParams.get("en") !== null) {
+        localStorage.setItem("lang", Language.English.toString());
+        window.location.search = "";
+    }
+
+    let storageLanguage = localStorage.getItem("lang");
+    console.log(storageLanguage);
+</script>

@@ -1,0 +1,44 @@
+---
+import { getCollection } from "astro:content";
+
+const events = await getCollection("events");
+
+const CTFs = events
+    .filter((event) => event.data.type === "ctf")
+    .map((event) => event.data);
+
+const hackathons = events
+    .filter((event) => event.data.type === "hackathon")
+    .map((event) => event.data);
+---
+
+<div class="container" id="events">
+    <h2>Events (CTF, hackathons etc)</h2>
+    I also take part in CTFs, hackathons and other such events.
+
+    <h3>Capture the Flag (CTF)</h3>
+    <ul>
+        {
+            CTFs.map((ctf) => (
+                <li>
+                    <a href={ctf.link} target="_blank">
+                        {ctf.name}
+                    </a>
+                </li>
+            ))
+        }
+    </ul>
+
+    <h3>Hackathons</h3>
+    <ul>
+        {
+            hackathons.map((hackathon) => (
+                <li>
+                    <a href={hackathon.link} target="_blank">
+                        {hackathon.name}
+                    </a>
+                </li>
+            ))
+        }
+    </ul>
+</div>
