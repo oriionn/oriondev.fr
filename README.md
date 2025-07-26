@@ -11,7 +11,7 @@ This site has a minimalist design so as not to lose sight of the site's content,
 ### Installation
 1. Clone the repository
 ```sh
-git clone https://github.com/oriionn/oriondev.fr
+git clone https://github.com/oriionn/oriondev.fr.git
 ```
 
 2. Install dependencies
