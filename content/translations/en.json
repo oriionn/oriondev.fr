@@ -1,5 +1,6 @@
 {
     "title": "Hi ! I'm Orion !",
+    "title_night": null,
     "description": "My name is Emilien, but I'm also known by the pseudonym \"Orion\". Currently in my final year of high school, I discovered development at the age of 8, which quickly made me passionate about IT as a whole. Self-taught, I now specialize in back-end development, mainly in TypeScript, while also exploring Golang and C (or other languages). I regularly take part in CTFs and hackathons, cybersecurity being an area that particularly appeals to me. I'm also interested in electronics, another field I'm enthusiastically exploring. Finally, politics is one of the subjects that fascinates me and that I follow closely.",
     "headings": {
         "projects": "Projects",

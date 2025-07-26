@@ -19,6 +19,7 @@ const hackathons = events
     .map((event) => event.data);
 
 const { translation } = Astro.props;
+const { lang } = Astro.params;
 ---
 
 <div class="container" id="events">
@@ -35,7 +36,7 @@ const { translation } = Astro.props;
                     </a>
 
                     {ctf.certificate ? (
-                        <a href={`/certificate/${ctf.certificate}`}>
+                        <a href={`/${lang}/certificate/${ctf.certificate}`}>
                             (<span>{translation.events.certificate}</span>)
                         </a>
                     ) : null}
@@ -54,7 +55,9 @@ const { translation } = Astro.props;
                     </a>
 
                     {hackathon.certificate ? (
-                        <a href={`/certificate/${hackathon.certificate}`}>
+                        <a
+                            href={`/${lang}/certificate/${hackathon.certificate}`}
+                        >
                             (<span>{translation.events.certificate}</span>)
                         </a>
                     ) : null}

@@ -25,6 +25,7 @@ const events = defineCollection({
 
 const translationSchema = z.object({
     title: z.string(),
+    title_night: z.string().nullable(),
     description: z.string(),
     headings: z.object({
         projects: z.string(),

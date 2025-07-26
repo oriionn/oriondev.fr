@@ -1,5 +1,6 @@
 {
     "title": "Bonjour !",
+    "title_night": "Bonsoir !",
     "description": "Je m'appelle Emilien, mais je suis également connu sous le pseudonyme \"Orion\". Actuellement en Terminale, j’ai découvert le développement à l’âge de 8 ans, ce qui m’a rapidement passionné pour l’informatique dans son ensemble. Autodidacte, je me spécialise aujourd’hui dans le développement back-end, principalement en TypeScript, tout en explorant également le Golang et le C (ou encore d'autres langage). Je participe régulièrement à des CTF et des hackathons, la cybersécurité étant un domaine qui m’attire particulièrement. Par ailleurs, je m'intéresse aussi à l’électronique, un autre champ que j’explore avec enthousiasme. Enfin, la politique fait partie des sujets qui me passionnent et que je suis de près.",
     "headings": {
         "projects": "Projets",

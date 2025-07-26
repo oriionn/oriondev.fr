@@ -12,7 +12,14 @@ const { translation } = Astro.props;
 
 <div class="container" id="profile">
     <Image src={avatar} alt="My profile picture" class="avatar" />
-    <h1>{translation.title}</h1>
+    <h1
+        data-translation-night={translation.title_night
+            ? translation.title_night
+            : null}
+        id="title"
+    >
+        {translation.title}
+    </h1>
     <p>
         {translation.description}
     </p>
@@ -31,3 +38,14 @@ const { translation } = Astro.props;
         margin: 0 !important;
     }
 </style>
+
+<script>
+    const title = document.getElementById("title");
+    if (title?.getAttribute("data-translation-night")) {
+        const date = new Date();
+        if (date.getHours() >= 18 || date.getHours() < 4) {
+            // @ts-ignore
+            title.innerHTML = title.getAttribute("data-translation-night");
+        }
+    }
+</script>

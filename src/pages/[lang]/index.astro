@@ -21,7 +21,7 @@ const { lang } = Astro.params;
 const translation = await getTranslation(lang);
 ---
 
-<Layout>
+<Layout title="Orion - Home">
     <Head lang={lang} />
     <Profile translation={translation} />
     <Projects translation={translation} />

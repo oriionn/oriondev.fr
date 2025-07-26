@@ -29,7 +29,7 @@ const { certificate, lang } = Astro.params;
 const translation = await getTranslation(lang);
 ---
 
-<Layout>
+<Layout title="Orion - Certificate">
     <a href={`/${lang}`} id="return">{translation.viewer.return}</a>
     <a
         href={`/certificates/${certificate}.pdf`}

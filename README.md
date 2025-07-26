@@ -1,46 +1,33 @@
-# Astro Starter Kit: Basics
+# oriondev.fr
+This repo contains my portfolio, written with Astro and using a bit of React to read PDFs.
 
+This site has a minimalist design so as not to lose sight of the site's content, and so that visitors don't get lost in all the pretty effects. It also features an internationalization system to target French AND English visitors.
+
+## Installation
+### Prerequisites
+- Bun
+- Git
+
+### Installation
+1. Clone the repository
 ```sh
-bun create astro@latest -- --template basics
+git clone https://github.com/oriionn/oriondev.fr
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
-
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src
-│   ├── assets
-│   │   └── astro.svg
-│   ├── components
-│   │   └── Welcome.astro
-│   ├── layouts
-│   │   └── Layout.astro
-│   └── pages
-│       └── index.astro
-└── package.json
+2. Install dependencies
+```sh
+bun Install
 ```
 
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
+3. Build the website
+```sh
+bun run build
+```
 
-## 🧞 Commands
+4. Run the website
+```sh
+bun run preview
+```
 
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `bun install`             | Installs dependencies                            |
-| `bun dev`             | Starts local dev server at `localhost:4321`      |
-| `bun build`           | Build your production site to `./dist/`          |
-| `bun preview`         | Preview your build locally, before deploying     |
-| `bun astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `bun astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+## License
+This project is under the [MIT License](https://choosealicense.com/licenses/mit/).
