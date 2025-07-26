@@ -3,6 +3,7 @@ This repo contains my portfolio, written with Astro and using a bit of React to 
 
 This site has a minimalist design so as not to lose sight of the site's content, and so that visitors don't get lost in all the pretty effects. It also features an internationalization system to target French AND English visitors.
 
+
 ## Installation
 ### Prerequisites
 - Bun
