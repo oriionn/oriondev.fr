@@ -1,6 +1,6 @@
 {
     "name": "PapillonApp",
     "link": "https://papillon.bzh",
-    "category": "Development/Communication",
+    "category": ["development", "communication"],
     "type": "pro_current"
 }

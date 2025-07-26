@@ -19,5 +19,11 @@
     "viewer": {
         "download": "Télécharger",
         "return": "Retour"
+    },
+    "categories": {
+        "development": "Développement",
+        "communication": "Communication",
+        "politic": "Politique",
+        "cybersec": "Cybersecurité"
     }
 }

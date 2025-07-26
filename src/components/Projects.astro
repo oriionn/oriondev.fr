@@ -5,8 +5,17 @@ import type { Translation } from "../content.config";
 interface Props {
     translation: Translation;
 }
+const { translation } = Astro.props;
 
-const projects = await getCollection("projects");
+let projects = await getCollection("projects");
+
+for (let i = 0; i < projects.length; i++) {
+    // @ts-ignore
+    projects[i].data.category = projects[i].data.category
+        .map((category) => translation.categories[category])
+        .join("/");
+}
+
 const currentProjects = projects
     .filter((project) => project.data.type === "pro_current")
     .map((project) => project.data);
@@ -18,8 +27,6 @@ const pastProjects = projects
 const personalProjects = projects
     .filter((project) => project.data.type === "personal")
     .map((project) => project.data);
-
-const { translation } = Astro.props;
 ---
 
 <div class="container" id="projects">

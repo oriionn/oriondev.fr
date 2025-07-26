@@ -1,6 +1,6 @@
 {
     "name": "downtime",
     "link": "https://github.com/oriionn/downtime",
-    "category": "Development",
+    "category": ["development"],
     "type": "personal"
 }

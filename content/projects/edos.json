@@ -1,6 +1,6 @@
 {
     "name": "Edos",
     "link": "https://github.com/oriionn/edos",
-    "category": "Development",
+    "category": ["development"],
     "type": "personal"
 }

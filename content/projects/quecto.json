@@ -1,6 +1,6 @@
 {
     "name": "Quecto",
     "link": "https://github.com/oriionn/quecto",
-    "category": "Development",
+    "category": ["development"],
     "type": "personal"
 }

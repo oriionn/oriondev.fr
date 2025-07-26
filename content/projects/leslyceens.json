@@ -1,6 +1,6 @@
 {
     "name": "LesLyceens",
     "link": "https://leslyceens.fr/",
-    "category": "Politic",
+    "category": ["politic"],
     "type": "pro_past"
 }

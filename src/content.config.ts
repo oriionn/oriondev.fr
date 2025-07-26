@@ -6,7 +6,9 @@ const projects = defineCollection({
     schema: z.object({
         name: z.string(),
         link: z.string(),
-        category: z.string(),
+        category: z.array(
+            z.enum(["development", "communication", "politic", "cybersec"]),
+        ),
         type: z.enum(["pro_current", "pro_past", "personal"]),
     }),
 });
@@ -42,6 +44,12 @@ const translationSchema = z.object({
     viewer: z.object({
         return: z.string(),
         download: z.string(),
+    }),
+    categories: z.object({
+        development: z.string(),
+        communication: z.string(),
+        politic: z.string(),
+        cybersec: z.string(),
     }),
 });
 
