@@ -16,7 +16,7 @@ git clone https://github.com/oriionn/oriondev.fr.git
 
 2. Install dependencies
 ```sh
-bun Install
+bun install
 ```
 
 3. Build the website
