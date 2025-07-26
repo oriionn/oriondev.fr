@@ -16,7 +16,7 @@ const events = defineCollection({
     schema: z.object({
         name: z.string(),
         link: z.string(),
-        certificate_link: z.string().nullable().default(null),
+        certificate: z.string().nullable().default(null),
         type: z.enum(["hackathon", "ctf"]),
     }),
 });

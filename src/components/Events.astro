@@ -1,6 +1,9 @@
 ---
+// @prettier-ignore
+
 import { getCollection } from "astro:content";
 import type { Translation } from "../content.config";
+import type { DIRTY } from "astro:schema";
 
 interface Props {
     translation: Translation;
@@ -28,8 +31,14 @@ const { translation } = Astro.props;
             CTFs.map((ctf) => (
                 <li>
                     <a href={ctf.link} target="_blank">
-                        {ctf.name}
+                        <span>{ctf.name}</span>
                     </a>
+
+                    {ctf.certificate ? (
+                        <a href={`/certificate/${ctf.certificate}`}>
+                            (<span>{translation.events.certificate}</span>)
+                        </a>
+                    ) : null}
                 </li>
             ))
         }
@@ -41,8 +50,14 @@ const { translation } = Astro.props;
             hackathons.map((hackathon) => (
                 <li>
                     <a href={hackathon.link} target="_blank">
-                        {hackathon.name}
+                        <span>{hackathon.name}</span>
                     </a>
+
+                    {hackathon.certificate ? (
+                        <a href={`/certificate/${hackathon.certificate}`}>
+                            (<span>{translation.events.certificate}</span>)
+                        </a>
+                    ) : null}
                 </li>
             ))
         }
