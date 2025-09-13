@@ -31,33 +31,39 @@ const personalProjects = projects
 
 <div class="container" id="projects">
     <h2>{translation.headings.projects}</h2>
-    <p>{translation.projects.currently}</p>
-    <ul>
-        {
+    {currentProjects.length > 0 && (
+      <>
+        <p>{translation.projects.currently}</p>
+        <ul>
+          {
             currentProjects.map((project) => (
-                <li>
-                    <a href={project.link} target="_blank">
-                        <span>@{project.name}</span>
-                    </a>
-                    <span>({project.category})</span>
-                </li>
+              <li>
+                <a href={project.link} target="_blank">
+                  <span>@{project.name}</span>
+                </a>
+                <span>({project.category})</span>
+              </li>
             ))
-        }
-    </ul>
+          }
+        </ul>
+      </>
+    )}
 
-    <p>{translation.projects.past}</p>
-    <ul>
-        {
-            pastProjects.map((project) => (
-                <li>
-                    <a href={project.link} target="_blank">
-                        <span>@{project.name}</span>
-                    </a>
-                    <span>({project.category})</span>
-                </li>
-            ))
-        }
-    </ul>
+    {pastProjects.length > 0 && (
+      <p>{translation.projects.past}</p>
+      <ul>
+          {
+              pastProjects.map((project) => (
+                  <li>
+                      <a href={project.link} target="_blank">
+                          <span>@{project.name}</span>
+                      </a>
+                      <span>({project.category})</span>
+                  </li>
+              ))
+          }
+      </ul>
+    )}
 
     <h3>{translation.headings.personal_projects}</h3>
     <p class="spare-time">
