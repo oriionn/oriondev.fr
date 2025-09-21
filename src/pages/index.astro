@@ -1,10 +1,19 @@
 ---
 import { getCollection } from "astro:content";
 import Layout from "../layouts/Layout.astro";
+import type { MiddlewareHandler } from "astro";
 
 const translations = (await getCollection("translations")).map(
     (translation) => translation.id,
 );
+
+export const onRequest: MiddlewareHandler = async ({ request, redirect }, next) => {
+    const referer = request.headers.get("referer")
+    if (!referer) return next();
+    let url = new URL(referer);
+    if (url.host === "demigirl.dev") return redirect("/trans", 302)
+    return next();
+}
 ---
 
 <Layout title="Orion - Home" lang={undefined}>
