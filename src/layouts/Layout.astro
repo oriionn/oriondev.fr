@@ -1,6 +1,7 @@
 ---
 interface Props {
     title: string;
+    lang: string | undefined | null;
 }
 ---
 
@@ -15,8 +16,14 @@ interface Props {
 
         <meta property="og:title" content={Astro.props.title} />
 
-        <meta property="og:description" content="16 y.o. backend developer" />
-        <meta name="description" content="16 y.o. backend developer" />
+        {Astro.props.lang === "trans" ? (
+            <meta property="og:description" content="16 y.o. backend developer - I'M A FUCKING DEMIGIRL" />
+            <meta name="description" content="16 y.o. backend developer - I'M A FUCKING DEMIGIRL" />
+        ):(
+            <meta property="og:description" content="16 y.o. backend developer" />
+            <meta name="description" content="16 y.o. backend developer" />
+        )}
+
 
         <meta property="og:image" content="/avatar.png" />
         <meta name="twitter:image:alt" content="Orion" />

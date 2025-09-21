@@ -7,7 +7,7 @@ const translations = (await getCollection("translations")).map(
 );
 ---
 
-<Layout title="Orion - Home">
+<Layout title="Orion - Home" lang={undefined}>
     <div data-translations={JSON.stringify(translations)} id="translations">
     </div>
 </Layout>
