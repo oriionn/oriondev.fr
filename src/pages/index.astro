@@ -11,7 +11,7 @@ export const onRequest: MiddlewareHandler = async ({ request, redirect }, next) 
     const referer = request.headers.get("referer")
     if (!referer) return next();
     let url = new URL(referer);
-    if (url.host === "demigirl.dev") return redirect("/trans", 302)
+    if (url.host === "demigirl.dev") return redirect("/trans", 307)
     return next();
 }
 ---
