@@ -19,9 +19,10 @@ export const getStaticPaths = (async () => {
 
 const { lang } = Astro.params;
 const translation = await getTranslation(lang);
+console.log(lang)
 ---
 
-<Layout title="Orion - Home">
+<Layout title="Orion - Home" lang={lang}>
     <Head lang={lang} />
     <Profile translation={translation} lang={lang} />
     <Projects translation={translation} />

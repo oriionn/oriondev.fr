@@ -3,6 +3,9 @@ interface Props {
     title: string;
     lang: string | undefined | null;
 }
+
+const { title } = Astro.props;
+const { lang } = Astro.params;
 ---
 
 <!doctype html>
@@ -12,16 +15,22 @@ interface Props {
         <meta name="viewport" content="width=device-width" />
         <link rel="icon" type="image/png" href="/favicon.png" />
         <meta name="generator" content={Astro.generator} />
-        <title>{Astro.props.title}</title>
+        <title>{title}</title>
 
-        <meta property="og:title" content={Astro.props.title} />
+        <meta property="og:title" content={title} />
 
-        {Astro.props.lang === "trans" ? (
-            <meta property="og:description" content="16 y.o. backend developer - I'M A FUCKING DEMIGIRL" />
-            <meta name="description" content="16 y.o. backend developer - I'M A FUCKING DEMIGIRL" />
-        ):(
-            <meta property="og:description" content="16 y.o. backend developer" />
-            <meta name="description" content="16 y.o. backend developer" />
+        {lang === "trans" && (
+            <>
+                <meta property="og:description" content="16 y.o. backend developer - I'M A FUCKING DEMIGIRL" />
+                <meta name="description" content="16 y.o. backend developer - I'M A FUCKING DEMIGIRL" />
+            </>
+        )}
+
+        {lang !== "trans" && (
+            <>
+                <meta property="og:description" content="16 y.o. backend developer" />
+                <meta name="description" content="16 y.o. backend developer" />
+            </>
         )}
 
 
