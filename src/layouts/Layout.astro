@@ -19,14 +19,12 @@ const { lang } = Astro.params;
 
         <meta property="og:title" content={title} />
 
-        {lang === "trans" && (
+        {lang === "trans" ? (
             <>
                 <meta property="og:description" content="16 y.o. backend developer - I'M A FUCKING DEMIGIRL" />
                 <meta name="description" content="16 y.o. backend developer - I'M A FUCKING DEMIGIRL" />
             </>
-        )}
-
-        {lang !== "trans" && (
+        ):(
             <>
                 <meta property="og:description" content="16 y.o. backend developer" />
                 <meta name="description" content="16 y.o. backend developer" />
