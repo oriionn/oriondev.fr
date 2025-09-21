@@ -1,0 +1,30 @@
+{
+    "title": "Bonjour !",
+    "title_night": "Bonsoir !",
+    "description": "Je m'appelle ???, mais je suis également connue sous le pseudonyme « Orion ». Actuellement en Terminale, j’ai découvert le développement à l’âge de 8 ans, ce qui m’a rapidement passionnée pour l’informatique dans son ensemble. Autodidacte, je me spécialise aujourd’hui dans le développement back-end, principalement en TypeScript, tout en explorant également le Golang et le C (ou encore d'autres langages). Je participe régulièrement à des CTF et des hackathons, la cybersécurité étant un domaine qui m’attire particulièrement. Par ailleurs, je m'intéresse aussi à l’électronique, un autre champ que j’explore avec enthousiasme. Enfin, la politique fait partie des sujets qui me passionnent et que je suis de près.",
+    "headings": {
+        "projects": "Projets",
+        "personal_projects": "Projets personnels",
+        "events": "Évènements (CTF, hackathons, etc)",
+        "findme": "Retrouvez moi sur"
+    },
+    "projects": {
+        "currently": "Je travaille actuellement chez...",
+        "past": "Dans le passé, je travaillais chez...",
+        "personal": "Dans mon temps libre, je développe des projets personnels, comme : "
+    },
+    "events": {
+        "events": "Je participe également à des CTFs, des hackathons ou d'autres évènements.",
+        "certificate": "Certificat"
+    },
+    "viewer": {
+        "download": "Télécharger",
+        "return": "Retour"
+    },
+    "categories": {
+        "development": "Développement",
+        "communication": "Communication",
+        "politic": "Politique",
+        "cybersec": "Cybersecurité"
+    }
+}

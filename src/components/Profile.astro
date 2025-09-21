@@ -5,9 +5,10 @@ import type { Translation } from "../content.config";
 
 interface Props {
     translation: Translation;
+    lang: string;
 }
 
-const { translation } = Astro.props;
+const { translation, lang } = Astro.props;
 ---
 
 <div class="container" id="profile">
@@ -19,6 +20,9 @@ const { translation } = Astro.props;
         id="title"
     >
         {translation.title}
+        {lang === "trans" ? (
+            <a href="https://gender.fandom.com/wiki/Demigirl" target="_blank" class="flag"><img src="https://cdn.demigirl.dev/demigirl.png" /></a>
+        ):null}
     </h1>
     <p>
         {translation.description}
@@ -32,6 +36,15 @@ const { translation } = Astro.props;
         margin-bottom: 10px;
 
         border-radius: 10px;
+    }
+
+    .flag {
+        border: none;
+    }
+
+    .flag img {
+        width: 30px;
+        border-radius: 2px;
     }
 
     h1 {
