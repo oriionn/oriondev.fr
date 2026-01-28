@@ -1,12 +1,17 @@
+---
+import { Moon } from "@lucide/astro";
+---
+
 <nav>
     <div class="navigation">
-        <a href="#home">Home</a>
-        <span class="separator">/</span>
-        <a href="#work">Work</a>
+        <button id="toggle_theme"><Moon size={30} /></button>
+        <a href="#projects">Events</a>
         <span class="separator">/</span>
         <a href="#projects">Projects</a>
         <span class="separator">/</span>
-        <a href="#projects">Events</a>
+        <a href="#work">Work</a>
+        <span class="separator">/</span>
+        <a href="#home">Home</a>
     </div>
 </nav>
 
@@ -24,13 +29,32 @@
 
     .navigation {
         width: 50%;
+        padding: 20px 0;
+        font-size: 20px;
 
         display: flex;
         gap: 10px;
         flex-direction: row-reverse;
+        align-items: center;
     }
 
     .separator {
         color: var(--secondary-foreground);
+    }
+
+    #toggle_theme {
+        margin-left: 10px;
+        background: none;
+        border: none;
+        cursor: pointer;
+    }
+
+    #toggle_theme svg {
+        stroke: var(--primary-foreground);
+    }
+
+    a {
+        color: var(--primary-foreground);
+        text-decoration: none;
     }
 </style>

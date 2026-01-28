@@ -1,0 +1,48 @@
+---
+import Avatar from "../assets/avatar.jpg"
+---
+
+<section class="profile">
+    <img src={Avatar.src} alt="Orion's avatar" />
+    <div class="presentation">
+        <h1>Orion</h1>
+        <div class="indent">
+            <span>Developer & High School Student</span>
+            <span>23:54:24 • Sat, Jan 2024</span>
+        </div>
+    </div>
+</section>
+
+<style>
+    img {
+        width: 120px;
+        height: auto;
+        border-radius: 10px;
+    }
+
+    section {
+        margin-top: 75.75px;
+        padding: var(--section-padding);
+
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+
+    .presentation {
+        display: flex;
+        flex-direction: column;
+        margin-left: 25px;
+    }
+
+    h1 {
+        margin: 0;
+    }
+
+    .indent {
+        margin-left: 25px;
+        display: flex;
+        flex-direction: column;
+        color: var(--secondary-foreground)
+    }
+</style>
