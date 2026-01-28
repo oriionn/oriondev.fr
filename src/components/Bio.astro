@@ -1,0 +1,51 @@
+---
+import { Github, Twitter } from "@lucide/astro";
+---
+
+<section class="bio">
+    <p>
+        Hello! My name is <b>Orion</b>, and I am a self-taught developer who has been passionate about computing since I was a child. I started learning programming when I was 8 years old, and gradually acquired more knowledge and rigour in my work. I try my hand at many areas of IT, such as programming, cyber security and system administration, but I mainly stick to programming.
+    </p>
+    <p>
+        I'm also just a high school student from Alsace, specialising in NSI (Computer Science) and Mathematics, with an optional course in Advanced Mathematics.
+    </p>
+    <div class="socials">
+        <a href="https://github.com/oriionn" target="_blank">
+            <Github />
+        </a>
+        <a href="https://x.com/orion_offi" target="_blank">
+            <Twitter />
+        </a>
+    </div>
+</section>
+
+<style>
+    b {
+        font-weight: 476;
+    }
+
+    p {
+        margin-top: 0;
+    }
+
+    .socials {
+        display: flex;
+        flex-direction: row;
+        gap: 10px;
+    }
+
+    .socials a {
+        background: var(--secondary-background);
+        width: 36px;
+        height: 36px;
+        border-radius: 5px;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    svg {
+        stroke: var(--primary-foreground);
+    }
+</style>
