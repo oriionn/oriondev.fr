@@ -6,18 +6,39 @@
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<link rel="icon" href="/favicon.ico" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
+		<title>Orion • Home</title>
 	</head>
 	<body>
-		<slot />
+        <div class="content">
+            <slot />
+        </div>
 	</body>
 </html>
 
 <style>
-	html,
+    * {
+        margin: 0;
+        padding: 0;
+        color: var(--primary-foreground);
+    }
+
 	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
+	    --primary-background: #FFFFFF;
+		--secondary-background: #F2F2F2;
+
+		--primary-foreground: #000000;
+		--secondary-foreground: rgba(0, 0, 0, .6);
+		--tertiary-foreground: rgba(18, 18, 18, .6);
+
+	    width: 100dvw;
+		height: 100dvh;
+		background: var(--primary-background);
+
+		display: flex;
+		justify-content: center;
+	}
+
+	.content {
+	    width: 50%;
 	}
 </style>
