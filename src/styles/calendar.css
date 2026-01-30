@@ -1,0 +1,39 @@
+rect[data-level="0"] {
+    fill: hsl(0, 0%, 92%);
+}
+
+rect[data-level="1"] {
+    fill: color-mix(in oklab, hsl(0, 0%, 26%) 25%, hsl(0, 0%, 92%));
+}
+
+rect[data-level="2"] {
+    fill: color-mix(in oklab, hsl(0, 0%, 26%) 50%, hsl(0, 0%, 92%));
+}
+
+rect[data-level="3"] {
+    fill: color-mix(in oklab, hsl(0, 0%, 26%) 75%, hsl(0, 0%, 92%));
+}
+
+rect[data-level="4"] {
+    fill: hsl(0, 0%, 26%);
+}
+
+body.dark rect[data-level="0"] {
+    fill: hsl(0, 0%, 22%);
+}
+
+body.dark rect[data-level="1"] {
+    fill: color-mix(in oklab, hsl(0, 0%, 92%) 25%, hsl(0, 0%, 22%));
+}
+
+body.dark rect[data-level="2"] {
+    fill: color-mix(in oklab, hsl(0, 0%, 92%) 50%, hsl(0, 0%, 22%));
+}
+
+body.dark rect[data-level="3"] {
+    fill: color-mix(in oklab, hsl(0, 0%, 92%) 75%, hsl(0, 0%, 22%));
+}
+
+body.dark rect[data-level="4"] {
+    fill: hsl(0, 0%, 92%);
+}
