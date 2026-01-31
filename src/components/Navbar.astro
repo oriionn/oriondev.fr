@@ -1,11 +1,14 @@
 ---
-import { Moon } from "@lucide/astro";
+import { Moon, Sun } from "@lucide/astro";
 ---
 
 <nav>
     <div class="navigation">
-        <button id="toggle_theme"><Moon size={30} /></button>
-        <a href="#projects">Events</a>
+        <button id="toggle_theme">
+            <Moon size={30} class="moon" />
+            <Sun size={30} class="sun" />
+        </button>
+        <a href="#events">Events</a>
         <span class="separator">/</span>
         <a href="#projects">Projects</a>
         <span class="separator">/</span>
@@ -67,10 +70,27 @@ import { Moon } from "@lucide/astro";
     a, .separator {
         font-size: 20px;
     }
+
+    body.dark .moon {
+        display: none;
+    }
+
+    body.dark .sun {
+        display: block;
+    }
+
+    body:not(.dark) .moon {
+        display: block;
+    }
+
+    body:not(.dark) .sun {
+        display: none;
+    }
 </style>
 
 <script>
     const nav = document.querySelector("nav");
+    const toggleThemeBtn = document.getElementById("toggle_theme");
 
     document.addEventListener("scroll", (e) => {
         if (document.body.scrollTop > 0 || document.documentElement.scrollTop > 0) {
@@ -78,5 +98,22 @@ import { Moon } from "@lucide/astro";
         } else {
             nav?.classList.remove("blurred");
         }
-    })
+    });
+
+    window.addEventListener("load", () => {
+        let storage = localStorage.getItem("theme");
+
+        if (!storage) {
+            let defaultDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)');
+            storage = (defaultDark && defaultDark.matches) ? "dark":"light";
+            localStorage.setItem("theme", storage);
+        }
+
+        if (storage === "dark") document.body.classList.add("dark");
+    });
+
+    toggleThemeBtn?.addEventListener("click", () => {
+        document.body.classList.toggle("dark");
+        localStorage.setItem("theme", document.body.classList.contains("dark") ? "dark":"light");
+    });
 </script>
