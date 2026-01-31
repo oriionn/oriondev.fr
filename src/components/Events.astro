@@ -1,0 +1,91 @@
+<section>
+    <h2>Events</h2>
+    <div class="events">
+        <div class="event">
+            <div class="left">
+                <h3>CSAW’24 Red Team Competition</h3>
+                <p>The Red Team Competition is developed for high school students, with the  aim of encouraging young people to choose cybersecurity careers. This  competition is open to all high school students in metropolitan France,  whether they are beginners or have some experience with cybersecurity  issues.</p>
+                <ul>
+                    <li>Capture The Flag</li>
+                </ul>
+            </div>
+            <div class="right">
+                <span>october 2024</span>
+            </div>
+        </div>
+
+        <div class="event">
+            <div class="left">
+                <h3>FCSC 2025</h3>
+                <p>The France Cybersecurity Challenge (FCSC) is a CTF organised every year by ANSSI. The FCSC aims to select the best French players to form Team France for the European Cybersecurity Challenge (ECSC).</p>
+                <ul>
+                    <li>
+                        <a href="#">Certificate</a>
+                    </li>
+                    <li>Capture The Flag</li>
+                </ul>
+            </div>
+            <div class="right">
+                <span>april 2025</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    .events {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .event {
+        width: 100%;
+        padding: 15px;
+
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    p {
+        width: 75%;
+    }
+
+    span, p {
+        color: var(--secondary-foreground);
+    }
+
+    ul {
+        display: flex;
+        flex-direction: row;
+
+        gap: 10px;
+        margin-top: 10px;
+    }
+
+    li {
+        list-style-type: none;
+        border-radius: 2px;
+        padding: 2px 4px;
+    }
+
+    li:not(:has(a)) {
+        color: var(--tertiary-foreground);
+        border: 1px dashed var(--tertiary-foreground);
+    }
+
+    li:has(a) {
+        background: var(--secondary-background);
+        color: var(--primary-foreground);
+        border-radius: 5px;
+    }
+
+    li a {
+        text-decoration: none;
+    }
+
+    .right {
+        white-space: nowrap;
+        flex-shrink: 0;
+    }
+</style>
