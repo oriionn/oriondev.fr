@@ -1,0 +1,121 @@
+---
+import { Github, SquareArrowOutUpRight } from "@lucide/astro";
+
+---
+
+<section>
+    <h2>Projects</h2>
+    <div class="projects">
+        <div class="project">
+            <div class="left">
+                <h3>LLMenu</h3>
+                <p>LLMenu is a simple application designed to display the menu for my school's canteen in a clean and uncluttered way.</p>
+                <ul>
+                    <li>Flutter</li>
+                    <li>Reverse engineering</li>
+                </ul>
+            </div>
+
+            <div class="right">
+                <ul>
+                    <li>
+                        <a href="https://github.com/oriionn/LLMenu" target="_blank"><Github /></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="project">
+            <div class="left">
+                <h3>buntp</h3>
+                <p>Just a small reimplementation of the NTP protocol with Bun, just for fun.</p>
+                <ul>
+                    <li>TypeScript</li>
+                    <li>Network</li>
+                </ul>
+            </div>
+
+            <div class="right">
+                <ul>
+                    <li>
+                        <a href="https://npmjs.com/package/buntp" target="_blank"><SquareArrowOutUpRight /></a>
+                    </li>
+                    <li>
+                        <a href="https://github.com/oriionn/buntp" target="_blank"><Github /></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    .projects {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .project {
+        width: 100%;
+        padding: 15px;
+
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    h3 {
+        font-weight: 476;
+        font-size: 22px;
+        margin-bottom: 2px;
+    }
+
+    p {
+        color: var(--secondary-foreground);
+        width: 75%;
+    }
+
+    .left ul {
+        margin-top: 10px;
+        list-style-type: none;
+
+        display: flex;
+        flex-direction: row;
+        gap: 10px;
+    }
+
+    .left li {
+        color: var(--tertiary-foreground);
+        border: 1px dashed var(--tertiary-foreground);
+        border-radius: 2px;
+        padding: 2px 4px;
+
+        font-size: 13px;
+        font-weight: 301;
+    }
+
+    .right ul {
+        list-style-type: none;
+
+        display: flex;
+        flex-direction: row-reverse;
+        gap: 10px;
+    }
+
+    .right a {
+        padding: 7px;
+        background: var(--secondary-background);
+        border-radius: 5px;
+
+        display: flex;
+
+    }
+
+    .right a * {
+        margin: 0;
+    }
+
+    .right a svg {
+        stroke: var(--primary-foreground);
+    }
+</style>
