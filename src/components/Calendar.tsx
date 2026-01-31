@@ -20,6 +20,8 @@ export function GithubCalendar() {
             maxLevel={4}
             colorScheme="light"
             className="calendar"
+            showColorLegend={false}
+            showTotalCount={false}
         />
     );
 }
