@@ -25,6 +25,13 @@ import { Moon } from "@lucide/astro";
         display: flex;
         justify-content: center;
         border-bottom: 1px var(--secondary-background) solid;
+
+        transition: backdrop-filter .5s;
+        backdrop-filter: blur(6px) opacity(0);
+    }
+
+    nav.blurred {
+        backdrop-filter: blur(6px) opacity(1);
     }
 
     .navigation {
@@ -61,3 +68,15 @@ import { Moon } from "@lucide/astro";
         font-size: 20px;
     }
 </style>
+
+<script>
+    const nav = document.querySelector("nav");
+
+    document.addEventListener("scroll", (e) => {
+        if (document.body.scrollTop > 0 || document.documentElement.scrollTop > 0) {
+            nav?.classList.add("blurred");
+        } else {
+            nav?.classList.remove("blurred");
+        }
+    })
+</script>
