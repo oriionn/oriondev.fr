@@ -1,5 +1,5 @@
 ---
-import { Moon, Sun } from "@lucide/astro";
+import { Moon, Sun, Menu, X } from "@lucide/astro";
 ---
 
 <nav>
@@ -15,6 +15,11 @@ import { Moon, Sun } from "@lucide/astro";
         <a href="#work">Work</a>
         <span class="separator">/</span>
         <a href="#home">Home</a>
+
+        <button id="menu" class="menu">
+            <Menu size={30} class="menu open" />
+            <X size={48} class="close" />
+        </button>
     </div>
 </nav>
 
@@ -33,7 +38,7 @@ import { Moon, Sun } from "@lucide/astro";
         backdrop-filter: blur(6px) opacity(0);
     }
 
-    nav.blurred {
+    nav.blurred, nav.opened {
         backdrop-filter: blur(6px) opacity(1);
     }
 
@@ -86,11 +91,75 @@ import { Moon, Sun } from "@lucide/astro";
     body:not(.dark) .sun {
         display: none;
     }
+
+    @media (max-width: 1350px) {
+        .navigation {
+            width: 75%;
+        }
+    }
+
+    .menu {
+        display: none;
+    }
+
+    @media (max-width: 750px) {
+        nav:not(.opened) .navigation *:not(.menu):not(#toggle_theme):not(#toggle_theme *) {
+            display: none;
+        }
+
+        nav:not(.opened) .navigation {
+            flex-direction: row;
+            justify-content: space-between;
+            gap: 10px;
+        }
+
+        .menu {
+            display: flex;
+        }
+
+        #menu {
+            background: none;
+            border: none;
+            outline: none;
+            cursor: pointer;
+        }
+
+        nav.opened .menu .open, nav.opened #toggle_theme {
+            display: none;
+        }
+
+        nav.opened {
+            width: 100%;
+            height: 100%;
+            z-index: 50;
+        }
+
+        nav.opened .close {
+            position: absolute;
+            top: 25px;
+            right: 35px;
+        }
+
+        nav.opened .navigation {
+            flex-direction: column-reverse;
+            align-items: center;
+            justify-content: center;
+        }
+
+        nav.opened a {
+            font-size: 36px;
+        }
+
+        nav.opened .separator {
+            display: none;
+        }
+    }
 </style>
 
 <script>
     const nav = document.querySelector("nav");
     const toggleThemeBtn = document.getElementById("toggle_theme");
+    const menu = document.getElementById("menu");
 
     document.addEventListener("scroll", (e) => {
         if (document.body.scrollTop > 0 || document.documentElement.scrollTop > 0) {
@@ -116,4 +185,8 @@ import { Moon, Sun } from "@lucide/astro";
         document.body.classList.toggle("dark");
         localStorage.setItem("theme", document.body.classList.contains("dark") ? "dark":"light");
     });
+
+    menu?.addEventListener("click", () => {
+        nav?.classList.toggle("opened");
+    })
 </script>

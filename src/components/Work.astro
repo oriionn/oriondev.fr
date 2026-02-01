@@ -1,9 +1,10 @@
-<section>
+<section id="work">
     <h2>Work</h2>
     <div class="works">
         <div class="work">
             <div class="left">
                 <h3>Nerieum</h3>
+                <span class="mobile_date">oct 2025 - today</span>
                 <p>Co-President</p>
             </div>
             <div class="right">
@@ -13,6 +14,7 @@
         <div class="work">
             <div class="left">
                 <h3>Papillon</h3>
+                <span class="mobile_date">nov 2023 - sept 2025</span>
                 <p>Public relations manager</p>
             </div>
             <div class="right">
@@ -43,5 +45,25 @@
 
     p, span {
         color: var(--secondary-foreground);
+    }
+
+    .mobile_date {
+        display: none;
+    }
+
+    @media (max-width: 665px) {
+        .right {
+            display: none;
+        }
+
+        .mobile_date {
+            display: inline-block !important;
+        }
+
+
+
+        p {
+            width: 100%;
+        }
     }
 </style>

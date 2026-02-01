@@ -2,13 +2,13 @@
 import Avatar from "../assets/avatar.jpg"
 ---
 
-<section class="profile">
+<section class="profile" id="home">
     <img src={Avatar.src} alt="Orion's avatar" />
     <div class="presentation">
         <h1>Orion</h1>
         <div class="indent">
             <span>Developer & High School Student</span>
-            <span>
+            <span class="datetime">
                 <span id="time"></span>
                 •
                 <span id="date"></span>
@@ -48,11 +48,31 @@ import Avatar from "../assets/avatar.jpg"
         margin-left: 20px;
         display: flex;
         flex-direction: column;
-        color: var(--secondary-foreground)
+    }
+
+    .indent span {
+        color: var(--secondary-foreground);
     }
 
     #time {
         font-variant-numeric: tabular-nums;
+    }
+
+    @media (max-width: 575px) {
+        img {
+            width: 100px;
+            height: 100px;
+        }
+
+        .datetime {
+            display: none;
+        }
+    }
+
+    @media (max-width: 505px) {
+        .indent span {
+            font-size: 15px;
+        }
     }
 </style>
 

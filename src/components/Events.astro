@@ -1,9 +1,10 @@
-<section>
+<section id="events">
     <h2>Events</h2>
     <div class="events">
         <div class="event">
             <div class="left">
                 <h3>CSAW’24 Red Team Competition</h3>
+                <span class="mobile_date">october 2024</span>
                 <p>The Red Team Competition is developed for high school students, with the  aim of encouraging young people to choose cybersecurity careers. This  competition is open to all high school students in metropolitan France,  whether they are beginners or have some experience with cybersecurity  issues.</p>
                 <ul>
                     <li>Capture The Flag</li>
@@ -17,6 +18,7 @@
         <div class="event">
             <div class="left">
                 <h3>FCSC 2025</h3>
+                <span class="mobile_date">april 2025</span>
                 <p>The France Cybersecurity Challenge (FCSC) is a CTF organised every year by ANSSI. The FCSC aims to select the best French players to form Team France for the European Cybersecurity Challenge (ECSC).</p>
                 <ul>
                     <li>
@@ -87,5 +89,29 @@
     .right {
         white-space: nowrap;
         flex-shrink: 0;
+    }
+
+    .mobile_date {
+        display: none;
+    }
+
+    @media (max-width: 665px) {
+        .right {
+            display: none;
+        }
+
+        .mobile_date {
+            display: inline-block !important;
+            margin-bottom: 10px;
+            font-size: 14px;
+        }
+
+        h3 {
+            margin-bottom: -2px;
+        }
+
+        p {
+            width: 100%;
+        }
     }
 </style>

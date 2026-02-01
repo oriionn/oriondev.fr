@@ -3,12 +3,17 @@ import { Github, SquareArrowOutUpRight } from "@lucide/astro";
 
 ---
 
-<section>
+<section id="projects">
     <h2>Projects</h2>
     <div class="projects">
         <div class="project">
             <div class="left">
                 <h3>LLMenu</h3>
+                <ul class="mobile_links">
+                    <li>
+                        <a href="https://github.com/oriionn/LLMenu" target="_blank"><Github size={16} /></a>
+                    </li>
+                </ul>
                 <p>LLMenu is a simple application designed to display the menu for my school's canteen in a clean and uncluttered way.</p>
                 <ul>
                     <li>Flutter</li>
@@ -28,6 +33,14 @@ import { Github, SquareArrowOutUpRight } from "@lucide/astro";
         <div class="project">
             <div class="left">
                 <h3>buntp</h3>
+                <ul class="mobile_links">
+                    <li>
+                        <a href="https://npmjs.com/package/buntp" target="_blank"><SquareArrowOutUpRight size={16} /></a>
+                    </li>
+                    <li>
+                        <a href="https://github.com/oriionn/buntp" target="_blank"><Github size={16} /></a>
+                    </li>
+                </ul>
                 <p>Just a small reimplementation of the NTP protocol with Bun, just for fun.</p>
                 <ul>
                     <li>TypeScript</li>
@@ -69,7 +82,7 @@ import { Github, SquareArrowOutUpRight } from "@lucide/astro";
         width: 75%;
     }
 
-    .left ul {
+    .left ul:not(.mobile_links) {
         margin-top: 10px;
         list-style-type: none;
 
@@ -78,7 +91,7 @@ import { Github, SquareArrowOutUpRight } from "@lucide/astro";
         gap: 10px;
     }
 
-    .left li {
+    .left ul:not(.mobile_links) li {
         color: var(--tertiary-foreground);
         border: 1px dashed var(--tertiary-foreground);
         border-radius: 2px;
@@ -88,7 +101,7 @@ import { Github, SquareArrowOutUpRight } from "@lucide/astro";
         font-weight: 301;
     }
 
-    .right ul {
+    .right ul, .mobile_links {
         list-style-type: none;
 
         display: flex;
@@ -96,13 +109,16 @@ import { Github, SquareArrowOutUpRight } from "@lucide/astro";
         gap: 10px;
     }
 
-    .right a {
+    .right a, .mobile_links a {
         padding: 7px;
         background: var(--secondary-background);
         border-radius: 5px;
 
         display: flex;
+    }
 
+    .mobile_links {
+        display: none;
     }
 
     .right a * {
@@ -111,5 +127,21 @@ import { Github, SquareArrowOutUpRight } from "@lucide/astro";
 
     .right a svg {
         stroke: var(--primary-foreground);
+    }
+
+    @media (max-width: 665px) {
+        .right {
+            display: none;
+        }
+
+        .mobile_links {
+            display: flex;
+            flex-direction: row;
+            margin-bottom: 10px;
+        }
+
+        .mobile_links a {
+            padding: 5px;
+        }
     }
 </style>

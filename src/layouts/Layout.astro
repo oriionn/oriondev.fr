@@ -27,6 +27,11 @@
         font-size: 16px;
     }
 
+    html {
+        scroll-padding-top: 80px;
+        scroll-behavior: smooth;
+    }
+
 	body {
 	    --primary-background: #FFFFFF;
 		--secondary-background: #F2F2F2;
@@ -70,5 +75,11 @@
         font-weight: 476;
         font-size: 22px;
         margin-bottom: 2px;
+    }
+
+    @media (max-width: 1350px) {
+        .content {
+            width: 75%;
+        }
     }
 </style>
