@@ -8,13 +8,13 @@ import { Moon, Sun, Menu, X } from "@lucide/astro";
             <Moon size={30} class="moon" />
             <Sun size={30} class="sun" />
         </button>
-        <a href="#events">Events</a>
+        <a href="#events" onclick="onLinkClick()">Events</a>
         <span class="separator">/</span>
-        <a href="#projects">Projects</a>
+        <a href="#projects" onclick="onLinkClick()">Projects</a>
         <span class="separator">/</span>
-        <a href="#work">Work</a>
+        <a href="#work" onclick="onLinkClick()">Work</a>
         <span class="separator">/</span>
-        <a href="#home">Home</a>
+        <a href="#home" onclick="onLinkClick()">Home</a>
 
         <button id="menu" class="menu">
             <Menu size={30} class="menu open" />
@@ -144,10 +144,13 @@ import { Moon, Sun, Menu, X } from "@lucide/astro";
             flex-direction: column-reverse;
             align-items: center;
             justify-content: center;
+
+            gap: 20px;
         }
 
         nav.opened a {
-            font-size: 36px;
+            font-size: 48px;
+            font-weight: 450;
         }
 
         nav.opened .separator {
@@ -161,15 +164,19 @@ import { Moon, Sun, Menu, X } from "@lucide/astro";
     const toggleThemeBtn = document.getElementById("toggle_theme");
     const menu = document.getElementById("menu");
 
-    document.addEventListener("scroll", (e) => {
+    function updateBlur() {
         if (document.body.scrollTop > 0 || document.documentElement.scrollTop > 0) {
             nav?.classList.add("blurred");
         } else {
             nav?.classList.remove("blurred");
         }
-    });
+    }
+
+    document.addEventListener("scroll", updateBlur);
 
     window.addEventListener("load", () => {
+        updateBlur();
+
         let storage = localStorage.getItem("theme");
 
         if (!storage) {
@@ -188,5 +195,14 @@ import { Moon, Sun, Menu, X } from "@lucide/astro";
 
     menu?.addEventListener("click", () => {
         nav?.classList.toggle("opened");
-    })
+    });
+
+    function onLinkClick() {
+        if (nav?.classList.contains("opened")) nav?.classList.remove("opened");
+    }
+
+    document.querySelectorAll("a").forEach(el => {
+        el.addEventListener("click", onLinkClick);
+    });
+
 </script>
