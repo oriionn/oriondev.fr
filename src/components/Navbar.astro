@@ -1,5 +1,9 @@
 ---
 import { Moon, Sun, Menu, X } from "@lucide/astro";
+import { getTranslation } from "../utils/translation";
+
+const { lang } = Astro.params ?? { lang: "en" };
+const translation = await getTranslation(lang!);
 ---
 
 <nav>
@@ -8,19 +12,19 @@ import { Moon, Sun, Menu, X } from "@lucide/astro";
             <Moon size={30} class="moon" />
             <Sun size={30} class="sun" />
         </button>
-        <a href="#events" onclick="onLinkClick()">Events</a>
+        <a href="#events" onclick="onLinkClick()">{translation.events.title}</a>
         <span class="separator">/</span>
-        <a href="#projects" onclick="onLinkClick()">Projects</a>
+        <a href="#projects" onclick="onLinkClick()">{translation.projects.title}</a>
         <span class="separator">/</span>
-        <a href="#work" onclick="onLinkClick()">Work</a>
+        <a href="#work" onclick="onLinkClick()">{translation.work.title}</a>
         <span class="separator">/</span>
-        <a href="#home" onclick="onLinkClick()">Home</a>
+        <a href="#home" onclick="onLinkClick()">{translation.home.title}</a>
 
         <ul>
-            <li class="active">
+            <li class={lang === "fr" ? "active":""}>
                 <a href="/fr">FR</a>
             </li>
-            <li>
+            <li class={lang === "en" ? "active":""}>
                 <a href="/en">EN</a>
             </li>
         </ul>

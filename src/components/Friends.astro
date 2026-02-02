@@ -1,5 +1,12 @@
+---
+import { getTranslation } from "../utils/translation";
+
+const { lang } = Astro.params ?? { lang: "en" };
+const translation = await getTranslation(lang!);
+---
+
 <section>
-    <h2>Friends</h2>
+    <h2>{translation.friends.title}</h2>
     <div class="friends">
         <a href="https://www.vexcited.com/" class="friend">
             <img src="https://placehold.co/400" alt="Vexcited"></img>

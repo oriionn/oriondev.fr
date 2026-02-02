@@ -1,10 +1,13 @@
 ---
 import { Github, SquareArrowOutUpRight } from "@lucide/astro";
+import { getTranslation } from "../utils/translation";
 
+const { lang } = Astro.params ?? { lang: "en" };
+const translation = await getTranslation(lang!);
 ---
 
 <section id="projects">
-    <h2>Projects</h2>
+    <h2>{translation.projects.title}</h2>
     <div class="projects">
         <div class="project">
             <div class="left">

@@ -1,5 +1,12 @@
+---
+import { getTranslation } from "../utils/translation";
+
+const { lang } = Astro.params ?? { lang: "en" };
+const translation = await getTranslation(lang!);
+---
+
 <section id="work">
-    <h2>Work</h2>
+    <h2>{translation.work.title}</h2>
     <div class="works">
         <div class="work">
             <div class="left">

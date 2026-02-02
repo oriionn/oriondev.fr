@@ -1,0 +1,24 @@
+{
+    "subtitle": "Développeur & Lycéen",
+    "home": {
+        "title": "Accueil",
+        "intl": "fr"
+    },
+    "work": {
+        "title": "Expériences"
+    },
+    "projects": {
+        "title": "Projets"
+    },
+    "events": {
+        "title": "Événements",
+        "certificate": "Certification"
+    },
+    "friends": {
+        "title": "Amis"
+    },
+    "footer": {
+        "designed": "Designé & développé par ",
+        "copyright": "Tout droits réservés."
+    }
+}

@@ -1,0 +1,24 @@
+{
+    "subtitle": "Developer & High School Student",
+    "home": {
+        "title": "Home",
+        "intl": "en"
+    },
+    "work": {
+        "title": "Work"
+    },
+    "projects": {
+        "title": "Projects"
+    },
+    "events": {
+        "title": "Events",
+        "certificate": "Certificate"
+    },
+    "friends": {
+        "title": "Friends"
+    },
+    "footer": {
+        "designed": "Design & Developed by ",
+        "copyright": "All rights reserved."
+    }
+}

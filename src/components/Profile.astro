@@ -1,5 +1,9 @@
 ---
-import Avatar from "../assets/avatar.jpg"
+import Avatar from "../assets/avatar.jpg";
+import { getTranslation } from "../utils/translation";
+
+const { lang } = Astro.params ?? { lang: "en" };
+const translation = await getTranslation(lang!);
 ---
 
 <section class="profile" id="home">
@@ -7,11 +11,11 @@ import Avatar from "../assets/avatar.jpg"
     <div class="presentation">
         <h1>Orion</h1>
         <div class="indent">
-            <span>Developer & High School Student</span>
+            <span>{translation.subtitle}</span>
             <span class="datetime">
                 <span id="time"></span>
                 •
-                <span id="date"></span>
+                <span id="date" data-intl={translation.home.intl}></span>
             </span>
         </div>
     </div>
@@ -79,6 +83,7 @@ import Avatar from "../assets/avatar.jpg"
 <script>
     const dateEl = document.getElementById("date");
     const timeEl = document.getElementById("time");
+    const intl = dateEl?.getAttribute("data-intl")!;
 
     const timeFormatter = new Intl.DateTimeFormat([], {
         timeZone: "Europe/Paris",
@@ -87,7 +92,7 @@ import Avatar from "../assets/avatar.jpg"
         second: "2-digit"
     });
 
-    const dateFormatter = new Intl.DateTimeFormat("en-US", {
+    const dateFormatter = new Intl.DateTimeFormat(intl, {
         timeZone: "Europe/Paris",
         weekday: "short",
         month: "short",
@@ -97,7 +102,7 @@ import Avatar from "../assets/avatar.jpg"
     const formatDate = (date: Date) => {
         let raw = dateFormatter.format(date);
         const s: string[] = raw.split(" ");
-        let formatted = `${s[2]}, ${s[0]} ${s[1]}`;
+        let formatted = `${s[2]}${intl === "en" ? ",":""} ${s[0]} ${s[1]}`;
         return formatted;
     }
 

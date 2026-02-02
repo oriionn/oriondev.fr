@@ -1,5 +1,12 @@
+---
+import { getTranslation } from "../utils/translation";
+
+const { lang } = Astro.params ?? { lang: "en" };
+const translation = await getTranslation(lang!);
+---
+
 <section id="events">
-    <h2>Events</h2>
+    <h2>{translation.events.title}</h2>
     <div class="events">
         <div class="event">
             <div class="left">
@@ -22,7 +29,7 @@
                 <p>The France Cybersecurity Challenge (FCSC) is a CTF organised every year by ANSSI. The FCSC aims to select the best French players to form Team France for the European Cybersecurity Challenge (ECSC).</p>
                 <ul>
                     <li>
-                        <a href="#">Certificate</a>
+                        <a href="#">{translation.events.certificate}</a>
                     </li>
                     <li>Capture The Flag</li>
                 </ul>

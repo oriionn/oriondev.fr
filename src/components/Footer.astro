@@ -1,6 +1,13 @@
+---
+import { getTranslation } from "../utils/translation";
+
+const { lang } = Astro.params ?? { lang: "en" };
+const translation = await getTranslation(lang!);
+---
+
 <footer>
-    <p>Design & Developed by <b>Orion</b></p>
-    <p>&copy; 2026. All rights reserved.</p>
+    <p>{translation.footer.designed} <b>Orion</b></p>
+    <p>&copy; 2026. {translation.footer.copyright}</p>
 
     <span>🏳️‍🌈</span>
 </footer>
