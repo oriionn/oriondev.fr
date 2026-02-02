@@ -16,6 +16,15 @@ import { Moon, Sun, Menu, X } from "@lucide/astro";
         <span class="separator">/</span>
         <a href="#home" onclick="onLinkClick()">Home</a>
 
+        <ul>
+            <li class="active">
+                <a href="/fr">FR</a>
+            </li>
+            <li>
+                <a href="/en">EN</a>
+            </li>
+        </ul>
+
         <button id="menu" class="menu">
             <Menu size={30} class="menu open" />
             <X size={48} class="close" />
@@ -106,6 +115,34 @@ import { Moon, Sun, Menu, X } from "@lucide/astro";
 
     .menu {
         display: none;
+    }
+
+    ul {
+        margin-right: auto;
+        display: flex;
+        flex-direction: row;
+
+        padding: 7px;
+        border-radius: 50px;
+    }
+
+    li {
+        list-style-type: none;
+
+        padding: 5px 10px;
+        border-radius: 50px;
+    }
+
+    li.active {
+        background: var(--primary-foreground);
+    }
+
+    li a {
+        font-size: 16px;
+    }
+
+    li.active a {
+        color: var(--secondary-background);
     }
 
     @media (max-width: 750px) {
