@@ -1,36 +1,20 @@
 ---
+import { getCollection } from "astro:content";
 import { getLocale } from "../utils/translation";
 
 const { translation } = await getLocale(Astro);
+const friends = await getCollection("friends");
 ---
 
 <section>
     <h2>{translation.friends.title}</h2>
     <div class="friends">
-        <a href="https://www.vexcited.com/" class="friend">
-            <img src="https://placehold.co/400" alt="Vexcited"></img>
-            <h3>Vexcited</h3>
-        </a>
-        <a href="https://www.vexcited.com/" class="friend">
-            <img src="https://placehold.co/400" alt="Vexcited"></img>
-            <h3>Vexcited</h3>
-        </a>
-        <a href="https://www.vexcited.com/" class="friend">
-            <img src="https://placehold.co/400" alt="Vexcited"></img>
-            <h3>Vexcited</h3>
-        </a>
-        <a href="https://www.vexcited.com/" class="friend">
-            <img src="https://placehold.co/400" alt="Vexcited"></img>
-            <h3>Vexcited</h3>
-        </a>
-        <a href="https://www.vexcited.com/" class="friend">
-            <img src="https://placehold.co/400" alt="Vexcited"></img>
-            <h3>Vexcited</h3>
-        </a>
-        <a href="https://www.vexcited.com/" class="friend">
-            <img src="https://placehold.co/400" alt="Vexcited"></img>
-            <h3>Vexcited</h3>
-        </a>
+        {friends.map(friend =>
+            <a href={friend.data.url} class="friend">
+                <img src={friend.data.image} alt={friend.data.name}></img>
+                <h3>{friend.data.name}</h3>
+            </a>
+        )}
     </div>
 </section>
 

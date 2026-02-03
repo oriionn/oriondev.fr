@@ -75,4 +75,13 @@ const projects = defineCollection({
     })
 })
 
-export const collections = { translations, bio, works, projects };
+const friends = defineCollection({
+    loader: glob({ pattern: "**/*.json", base: "./content/friends" }),
+    schema: z.object({
+        name: z.string(),
+        image: z.string(),
+        url: z.string()
+    })
+})
+
+export const collections = { translations, bio, works, projects, friends };
