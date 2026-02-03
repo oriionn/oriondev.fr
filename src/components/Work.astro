@@ -1,33 +1,39 @@
 ---
+import { getCollection } from "astro:content";
 import { getTranslation } from "../utils/translation";
 
 const { lang } = Astro.params ?? { lang: "en" };
 const translation = await getTranslation(lang!);
+
+let works = await getCollection("works")
+// @ts-expect-error
+works.sort((a, b) => (new Date(b.data.start) - new Date(a.data.start)));
+
+const dateFormatter = new Intl.DateTimeFormat(translation.home.intl, {
+    timeZone: "Europe/Paris",
+    month: "short",
+    year: "numeric",
+});
+
+const formatDate = (start: Date, end: Date | null) =>
+    `${dateFormatter.format(start)} - ${end === null ? translation.today:dateFormatter.format(end)}`.toLowerCase()
 ---
 
 <section id="work">
     <h2>{translation.work.title}</h2>
     <div class="works">
-        <div class="work">
-            <div class="left">
-                <h3>Nerieum</h3>
-                <span class="mobile_date">oct 2025 - today</span>
-                <p>Co-President</p>
+        {works.map((work) => (
+            <div class="work">
+                <div class="left">
+                    <h3>{work.data[lang].title}</h3>
+                    <span class="mobile_date">oct 2025 - today</span>
+                    <p>{work.data[lang].subtitle}</p>
+                </div>
+                <div class="right">
+                    <span>{formatDate(work.data.start, work.data.end)}</span>
+                </div>
             </div>
-            <div class="right">
-                <span>oct 2025 - today</span>
-            </div>
-        </div>
-        <div class="work">
-            <div class="left">
-                <h3>Papillon</h3>
-                <span class="mobile_date">nov 2023 - sept 2025</span>
-                <p>Public relations manager</p>
-            </div>
-            <div class="right">
-                <span>nov 2023 - sept 2025</span>
-            </div>
-        </div>
+        ))}
     </div>
 </section>
 

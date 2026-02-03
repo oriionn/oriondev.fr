@@ -4,6 +4,7 @@ import { z } from "astro:schema";
 
 const translationScheme = z.object({
     subtitle: z.string(),
+    today: z.string(),
     home: z.object({
         title: z.string(),
         intl: z.string()
@@ -41,4 +42,20 @@ const bio = defineCollection({
     loader: glob({ pattern: "**/*.md", base: "./content/bio" })
 })
 
-export const collections = { translations, bio };
+const works = defineCollection({
+    loader: glob({ pattern: "**/*.json", "base": "./content/works" }),
+    schema: z.object({
+        fr: z.object({
+            title: z.string(),
+            subtitle: z.string()
+        }),
+        en: z.object({
+            title: z.string(),
+            subtitle: z.string()
+        }),
+        start: z.coerce.date(),
+        end: z.coerce.date().nullable()
+    })
+})
+
+export const collections = { translations, bio, works };
