@@ -4,6 +4,22 @@
         "title": "Accueil",
         "intl": "fr"
     },
+    "github": {
+        "months": [
+            "Janv",
+            "Févr",
+            "Mars",
+            "Avr",
+            "Mai",
+            "Juin",
+            "Juil",
+            "Août",
+            "Sept",
+            "Oct",
+            "Nov",
+            "Déc"
+        ]
+    },
     "work": {
         "title": "Expériences"
     },

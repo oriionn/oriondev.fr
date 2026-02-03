@@ -8,6 +8,9 @@ const translationScheme = z.object({
         title: z.string(),
         intl: z.string()
     }),
+    github: z.object({
+        months: z.array(z.string())
+    }),
     work: z.object({
         title: z.string()
     }),

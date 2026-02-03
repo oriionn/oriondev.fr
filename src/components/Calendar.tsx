@@ -3,7 +3,7 @@ import { ActivityCalendar } from "react-activity-calendar";
 
 export type Activity = { date: string; count: number; level: 0 | 1 | 2 | 3 | 4; };
 
-export function GithubCalendar() {
+export function GithubCalendar({ months }: { months: string[] }) {
     const [data, setData] = useState<Activity[] | null>(null);
 
     useEffect(() => {
@@ -22,6 +22,9 @@ export function GithubCalendar() {
             className="calendar"
             showColorLegend={false}
             showTotalCount={false}
+            labels={{
+                months
+            }}
         />
     );
 }
