@@ -1,0 +1,13 @@
+{
+    "fr": {
+        "title": "LLMenu",
+        "description": "Une petite application qui vous permet de regarder le menu de la cantine du Lycée Louis Marchal en toute tranquilité"
+    },
+    "en": {
+        "title": "LLMenu",
+        "description": "A small app that lets you check the Louis Marchal High School canteen menu with total peace of mind."
+    },
+    "stacks": ["Flutter", "Reverse engineering"],
+    "github": "https://github.com/oriionn/llmenu",
+    "website": null
+}

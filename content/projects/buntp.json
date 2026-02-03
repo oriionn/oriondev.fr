@@ -1,0 +1,13 @@
+{
+    "fr": {
+        "title": "buntp",
+        "description": "Une petite réimplémentation du protocole NTP avec Bun, juste pour le plaisir."
+    },
+    "en": {
+        "title": "buntp",
+        "description": "Just a small reimplementation of the NTP protocol with Bun, just for fun."
+    },
+    "stacks": ["TypeScript", "Network"],
+    "github": "https://github.com/oriionn/buntp",
+    "website": "https://npmjs.com/package/buntp"
+}

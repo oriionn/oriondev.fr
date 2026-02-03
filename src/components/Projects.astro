@@ -1,53 +1,39 @@
 ---
 import { Github, SquareArrowOutUpRight } from "@lucide/astro";
 import { getLocale } from "../utils/translation";
+import { getCollection } from "astro:content";
 
-const { translation } = await getLocale(Astro);
+const { translation, lang } = await getLocale(Astro);
+let projects = await getCollection("projects");
 ---
 
 <section id="projects">
     <h2>{translation.projects.title}</h2>
     <div class="projects">
-        <div class="project">
-            <div class="left">
-                <h3>LLMenu</h3>
-                <p>LLMenu is a simple application designed to display the menu for my school's canteen in a clean and uncluttered way.</p>
-                <ul>
-                    <li>Flutter</li>
-                    <li>Reverse engineering</li>
-                </ul>
-            </div>
+        {projects.map((project) => (
+            <div class="project">
+                <div class="left">
+                    <h3>{project.data[lang].title}</h3>
+                    <p>{project.data[lang].description}</p>
+                    <ul>
+                        {project.data.stacks.map((stack) => {
+                            <li>{stack}</li>
+                        })}
+                    </ul>
+                </div>
 
-            <div class="right">
-                <ul>
-                    <li>
-                        <a href="https://github.com/oriionn/LLMenu" target="_blank"><Github /></a>
-                    </li>
-                </ul>
+                <div class="right">
+                    <ul>
+                        {project.data.website ? <li>
+                            <a href={project.data.website} target="_blank"><SquareArrowOutUpRight /></a>
+                        </li>:null}
+                        {project.data.github ? <li>
+                            <a href={project.data.github} target="_blank"><Github /></a>
+                        </li>:null}
+                    </ul>
+                </div>
             </div>
-        </div>
-
-        <div class="project">
-            <div class="left">
-                <h3>buntp</h3>
-                <p>Just a small reimplementation of the NTP protocol with Bun, just for fun.</p>
-                <ul>
-                    <li>TypeScript</li>
-                    <li>Network</li>
-                </ul>
-            </div>
-
-            <div class="right">
-                <ul>
-                    <li>
-                        <a href="https://npmjs.com/package/buntp" target="_blank"><SquareArrowOutUpRight /></a>
-                    </li>
-                    <li>
-                        <a href="https://github.com/oriionn/buntp" target="_blank"><Github /></a>
-                    </li>
-                </ul>
-            </div>
-        </div>
+        ))}
     </div>
 </section>
 

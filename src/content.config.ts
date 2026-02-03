@@ -43,7 +43,7 @@ const bio = defineCollection({
 })
 
 const works = defineCollection({
-    loader: glob({ pattern: "**/*.json", "base": "./content/works" }),
+    loader: glob({ pattern: "**/*.json", base: "./content/works" }),
     schema: z.object({
         fr: z.object({
             title: z.string(),
@@ -56,6 +56,23 @@ const works = defineCollection({
         start: z.coerce.date(),
         end: z.coerce.date().nullable()
     })
+});
+
+const projects = defineCollection({
+    loader: glob({ pattern: "**/*.json", base: "./content/projects" }),
+    schema: z.object({
+        fr: z.object({
+            title: z.string(),
+            description: z.string()
+        }),
+        en: z.object({
+            title: z.string(),
+            description: z.string()
+        }),
+        stacks: z.array(z.string()),
+        github: z.string().nullable(),
+        website: z.string().nullable()
+    })
 })
 
-export const collections = { translations, bio, works };
+export const collections = { translations, bio, works, projects };

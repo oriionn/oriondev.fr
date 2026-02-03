@@ -5,9 +5,11 @@ import type { AstroComponentFactory } from "astro/runtime/server/index.js";
 
 export async function getLocale(
     Astro: Readonly<AstroGlobal<Record<string, any>, AstroComponentFactory, Record<string, string | undefined>>>
-): Promise<{ translation: Translation, lang: string }> {
+): Promise<{ translation: Translation, lang: "fr" | "en" }> {
     const translations = await getCollection("translations");
     let lang = Astro.params.lang ?? "en";
+
+    if (lang !== "en" && lang !== "fr") throw new Error("Invalid lang");
 
     let translation = translations.filter((translation: { id: string }) => translation.id === lang);
     return {
