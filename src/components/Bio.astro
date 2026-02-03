@@ -1,8 +1,9 @@
 ---
 import { Github, Twitter } from "@lucide/astro";
 import { getCollection, render } from "astro:content";
+import { getLocale } from "../utils/translation";
 
-const { lang } = Astro.params ?? { lang: "en" };
+const { lang } = await getLocale(Astro);
 const bios = await getCollection("bio");
 let bio = bios.filter((bio: { id: string }) => bio.id === lang)[0];
 const { Content } = await render(bio);

@@ -1,9 +1,8 @@
 ---
 import { getCollection } from "astro:content";
-import { getTranslation } from "../utils/translation";
+import { getLocale } from "../utils/translation";
 
-const { lang } = Astro.params ?? { lang: "en" };
-const translation = await getTranslation(lang!);
+const { lang, translation } = await getLocale(Astro);
 
 let works = await getCollection("works")
 // @ts-expect-error

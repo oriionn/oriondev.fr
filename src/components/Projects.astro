@@ -1,9 +1,8 @@
 ---
 import { Github, SquareArrowOutUpRight } from "@lucide/astro";
-import { getTranslation } from "../utils/translation";
+import { getLocale } from "../utils/translation";
 
-const { lang } = Astro.params ?? { lang: "en" };
-const translation = await getTranslation(lang!);
+const { translation } = await getLocale(Astro);
 ---
 
 <section id="projects">

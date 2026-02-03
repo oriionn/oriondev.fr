@@ -1,9 +1,8 @@
 ---
 import Avatar from "../assets/avatar.jpg";
-import { getTranslation } from "../utils/translation";
+import { getLocale } from "../utils/translation";
 
-const { lang } = Astro.params ?? { lang: "en" };
-const translation = await getTranslation(lang!);
+const { translation } = await getLocale(Astro);
 ---
 
 <section class="profile" id="home">
