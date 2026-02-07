@@ -22,9 +22,12 @@ export const getStaticPaths = (async () => {
         params: { lang: translation.id },
     }));
 }) satisfies GetStaticPaths;
+
+const { lang } = Astro.params;
 ---
 
 <Layout>
+    <div id="userlang" class={lang}></div>
     <Navbar />
     <Profile />
     <Bio />
@@ -35,3 +38,8 @@ export const getStaticPaths = (async () => {
     <Friends />
     <Footer />
 </Layout>
+
+<script>
+    const langEl = document.getElementById("userlang");
+    localStorage.setItem("language", langEl?.classList.toString() ?? "en");
+</script>

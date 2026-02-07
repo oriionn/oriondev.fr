@@ -1,25 +1,10 @@
----
-import Navbar from "../components/Navbar.astro";
-import Profile from "../components/Profile.astro";
-import Bio from "../components/Bio.astro";
-import GitHub from '../components/GitHub.astro';
-import Work from "../components/Work.astro";
-import Projects from "../components/Projects.astro";
-import Events from "../components/Events.astro";
-import Friends from "../components/Friends.astro";
-import Footer from "../components/Footer.astro";
+<script>
+    const validLanguages = ["fr", "en"];
+    let language = navigator.language === "fr" ? "fr":"en";
+    let storedLanguage = localStorage.getItem("language")
+    if (storedLanguage != null) language = storedLanguage;
 
-import Layout from '../layouts/Layout.astro';
----
-
-<Layout>
-    <Navbar />
-    <Profile />
-    <Bio />
-    <GitHub />
-    <Work />
-    <Projects />
-    <Events />
-    <Friends />
-    <Footer />
-</Layout>
+    if (!validLanguages.includes(language)) language = "en";
+    localStorage.setItem("language", language);
+    window.location.href = `/${language}`
+</script>
