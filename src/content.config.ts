@@ -82,6 +82,20 @@ const friends = defineCollection({
         image: z.string(),
         url: z.string()
     })
+});
+
+const events = defineCollection({
+    loader: glob({ pattern: "**/*.json", base: "./content/events" }),
+    schema: z.object({
+        title: z.string(),
+        description: z.object({
+            fr: z.string(),
+            en: z.string()
+        }),
+        tags: z.array(z.string()),
+        certificate: z.string().nullable(),
+        date: z.coerce.date()
+    })
 })
 
-export const collections = { translations, bio, works, projects, friends };
+export const collections = { translations, bio, works, projects, friends, events };

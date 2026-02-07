@@ -1,0 +1,10 @@
+{
+    "title": "CSAW’24 Red Team Competition",
+    "description": {
+        "fr": "Le concours Red Team est destiné aux lycéens et vise à encourager les jeunes à choisir une carrière dans le domaine de la cybersécurité. Ce concours est ouvert à tous les lycéens de France métropolitaine, qu'ils soient débutants ou qu'ils aient déjà une certaine expérience des questions de cybersécurité.",
+        "en": "The Red Team Competition is developed for high school students, with the aim of encouraging young people to choose cybersecurity careers. This competition is open to all high school students in metropolitan France, whether they are beginners or have some experience with cybersecurity issues."
+    },
+    "tags": ["Capture The Flag"],
+    "certificate": null,
+    "date": "2024-10-07T16:30:46.570Z"
+}

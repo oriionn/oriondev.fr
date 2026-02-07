@@ -1,42 +1,45 @@
 ---
+import { getCollection } from "astro:content";
 import { getLocale } from "../utils/translation";
+import { dateFormatter } from "../utils/formatter";
 
-const { translation } = await getLocale(Astro);
+const { translation, lang } = await getLocale(Astro);
+
+let events = await getCollection("events");
+// @ts-expect-error
+events.sort((a, b) => (new Date(b.data.date) - new Date(a.data.date)));
+const formatter = Intl.DateTimeFormat(translation.home.intl, {
+    timeZone: "Europe/Paris",
+    month: "long",
+    year: "numeric",
+});
 ---
 
 <section id="events">
     <h2>{translation.events.title}</h2>
     <div class="events">
-        <div class="event">
-            <div class="left">
-                <h3>CSAW’24 Red Team Competition</h3>
-                <span class="mobile_date">october 2024</span>
-                <p>The Red Team Competition is developed for high school students, with the  aim of encouraging young people to choose cybersecurity careers. This  competition is open to all high school students in metropolitan France,  whether they are beginners or have some experience with cybersecurity  issues.</p>
-                <ul>
-                    <li>Capture The Flag</li>
-                </ul>
+        {events.map(event =>
+            <div class="event">
+                <div class="left">
+                    <h3>{event.data.title}</h3>
+                    <span class="mobile_date">{formatter.format(event.data.date).toLowerCase()}</span>
+                    <p>{event.data.description[lang]}</p>
+                    <ul>
+                        {event.data.certificate !== null ?
+                            <li>
+                                <a href="#">{translation.events.certificate}</a>
+                            </li>:null
+                        }
+                        {event.data.tags.map(tag =>
+                            <li>{tag}</li>
+                        )}
+                    </ul>
+                </div>
+                <div class="right">
+                    <span>{formatter.format(event.data.date).toLowerCase()}</span>
+                </div>
             </div>
-            <div class="right">
-                <span>october 2024</span>
-            </div>
-        </div>
-
-        <div class="event">
-            <div class="left">
-                <h3>FCSC 2025</h3>
-                <span class="mobile_date">april 2025</span>
-                <p>The France Cybersecurity Challenge (FCSC) is a CTF organised every year by ANSSI. The FCSC aims to select the best French players to form Team France for the European Cybersecurity Challenge (ECSC).</p>
-                <ul>
-                    <li>
-                        <a href="#">{translation.events.certificate}</a>
-                    </li>
-                    <li>Capture The Flag</li>
-                </ul>
-            </div>
-            <div class="right">
-                <span>april 2025</span>
-            </div>
-        </div>
+        )}
     </div>
 </section>
 

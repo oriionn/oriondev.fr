@@ -7,8 +7,9 @@ const { lang, translation } = await getLocale(Astro);
 let works = await getCollection("works")
 // @ts-expect-error
 works.sort((a, b) => (new Date(b.data.start) - new Date(a.data.start)));
+const intl = translation.home.intl;
 
-const dateFormatter = new Intl.DateTimeFormat(translation.home.intl, {
+const dateFormatter = new Intl.DateTimeFormat(intl, {
     timeZone: "Europe/Paris",
     month: "short",
     year: "numeric",
