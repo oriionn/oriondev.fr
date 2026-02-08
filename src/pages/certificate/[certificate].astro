@@ -1,0 +1,13 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+export const getStaticPaths = (async () => {
+    let certificates = readdirSync("public/certificates").map((certificate) =>
+        certificate.split(".").slice(0, -1).join("."),
+    );
+
+    return certificates.map((c) => ({
+        certificate: c
+    }));
+}) satisfies GetStaticPaths;
+---
