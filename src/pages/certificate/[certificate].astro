@@ -3,6 +3,7 @@ import { MoveLeft, Moon, Sun } from "@lucide/astro";
 
 import type { GetStaticPaths } from 'astro';
 import Layout from '../../layouts/Layout.astro';
+// @ts-expect-error
 import { readdirSync } from "fs";
 
 export const prerender = true;
@@ -85,18 +86,29 @@ const { certificate } = Astro.params;
     body:not(.dark) .sun {
         display: none;
     }
+
+    #certificate {
+        margin-top: 90px;
+        border-radius: 10px;
+    }
+
+    #certificate {
+        width: 100%;
+        height: auto;
+    }
 </style>
 
 <script
   is:inline
-  src="https://unpkg.com/pdfjs-dist@4.0.269/build/pdf.min.mjs"
+  src="https://unpkg.com/pdfjs-dist@5.4.624/build/pdf.min.mjs"
   type="module"></script>
 
 <script>
     const toggleThemeBtn = document.getElementById("toggle_theme");
-    const certificate = document.getElementById("certificate");
+    const certificate = document.getElementById("certificate")! as HTMLCanvasElement;
 
-    pdfjsLib.GlobalWorkerOptions.workerSrc = "/library/pdfjs/build/pdf.worker.js";
+    // @ts-expect-error
+    pdfjsLib.GlobalWorkerOptions.workerSrc = "https://unpkg.com/pdfjs-dist@5.4.624/build/pdf.worker.min.mjs";
     const certificateUrl = certificate!.classList.value;
 
     window.addEventListener("load", () => {
@@ -117,14 +129,15 @@ const { certificate } = Astro.params;
     });
 
     async function loadCertificate() {
-        let doc = await pdfjsLib.getDocument(certificateUrl);
-        doc
-            .getPage(1)
+        // @ts-expect-error
+        let doc = await pdfjsLib.getDocument(certificateUrl).promise;
+        doc.getPage(1)
+            // @ts-expect-error
             .then(function (page) {
     			const viewport = page.getViewport({ scale: 1 });
 
     			certificate.width = viewport.width;
-    			certificate.height = viewport.height;
+    			certificate.height = viewport.height - 5;
                 const ctx = certificate.getContext('2d');
 
     			const renderContext = {
@@ -133,9 +146,6 @@ const { certificate } = Astro.params;
     			};
 
     			page.render(renderContext);
-    		})
-    		.then(function () {
-    			console.log('Rendering complete');
     		});
     }
 

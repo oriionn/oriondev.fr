@@ -5,6 +5,6 @@
         "en": "The France Cybersecurity Challenge (FCSC) is a CTF organised every year by ANSSI. The FCSC aims to select the best French players to form Team France for the European Cybersecurity Challenge (ECSC)."
     },
     "tags": ["Capture The Flag"],
-    "certificate": "fcsc25.pdf",
+    "certificate": "fcsc25",
     "date": "2025-04-07T16:30:46.570Z"
 }

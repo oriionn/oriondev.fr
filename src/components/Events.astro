@@ -27,7 +27,7 @@ const formatter = Intl.DateTimeFormat(translation.home.intl, {
                     <ul>
                         {event.data.certificate !== null ?
                             <li>
-                                <a href="#">{translation.events.certificate}</a>
+                                <a href={`/certificate/${event.data.certificate}`}>{translation.events.certificate}</a>
                             </li>:null
                         }
                         {event.data.tags.map(tag =>
