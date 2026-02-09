@@ -1,13 +1,143 @@
 ---
+import { MoveLeft, Moon, Sun } from "@lucide/astro";
+
+import type { GetStaticPaths } from 'astro';
 import Layout from '../../layouts/Layout.astro';
+import { readdirSync } from "fs";
+
+export const prerender = true;
 
 export const getStaticPaths = (async () => {
-    let certificates = readdirSync("public/certificates").map((certificate) =>
+    let certificates = readdirSync("public/certificates").map((certificate: string) =>
         certificate.split(".").slice(0, -1).join("."),
     );
 
-    return certificates.map((c) => ({
+    return certificates.map((c: string) => ({ params: {
         certificate: c
-    }));
+    }}));
 }) satisfies GetStaticPaths;
+
+const { certificate } = Astro.params;
 ---
+
+<Layout>
+    <nav>
+        <div class="navigation">
+            <a href="/">
+                <MoveLeft size={30} id="return" />
+            </a>
+
+            <button id="toggle_theme">
+                <Moon size={30} class="moon" />
+                <Sun size={30} class="sun" />
+            </button>
+        </div>
+    </nav>
+
+    <canvas id="certificate" class={`/certificates/${certificate}.pdf`}></canvas>
+</Layout>
+
+<style>
+    nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+
+        width: 100dvw;
+        display: flex;
+        justify-content: center;
+        border-bottom: 1px var(--secondary-background) solid;
+    }
+
+    .navigation {
+        width: 50%;
+        padding: 20px 0;
+
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    #toggle_theme {
+        margin-left: 10px;
+        background: none;
+        border: none;
+        cursor: pointer;
+    }
+
+    #toggle_theme svg {
+        stroke: var(--primary-foreground);
+    }
+
+    body.dark .moon {
+        display: none;
+    }
+
+    body.dark .sun {
+        display: block;
+    }
+
+    body:not(.dark) .moon {
+        display: block;
+    }
+
+    body:not(.dark) .sun {
+        display: none;
+    }
+</style>
+
+<script
+  is:inline
+  src="https://unpkg.com/pdfjs-dist@4.0.269/build/pdf.min.mjs"
+  type="module"></script>
+
+<script>
+    const toggleThemeBtn = document.getElementById("toggle_theme");
+    const certificate = document.getElementById("certificate");
+
+    pdfjsLib.GlobalWorkerOptions.workerSrc = "/library/pdfjs/build/pdf.worker.js";
+    const certificateUrl = certificate!.classList.value;
+
+    window.addEventListener("load", () => {
+        let storage = localStorage.getItem("theme");
+
+        if (!storage) {
+            let defaultDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)');
+            storage = (defaultDark && defaultDark.matches) ? "dark":"light";
+            localStorage.setItem("theme", storage);
+        }
+
+        if (storage === "dark") document.body.classList.add("dark");
+    });
+
+    toggleThemeBtn?.addEventListener("click", () => {
+        document.body.classList.toggle("dark");
+        localStorage.setItem("theme", document.body.classList.contains("dark") ? "dark":"light");
+    });
+
+    async function loadCertificate() {
+        let doc = await pdfjsLib.getDocument(certificateUrl);
+        doc
+            .getPage(1)
+            .then(function (page) {
+    			const viewport = page.getViewport({ scale: 1 });
+
+    			certificate.width = viewport.width;
+    			certificate.height = viewport.height;
+                const ctx = certificate.getContext('2d');
+
+    			const renderContext = {
+    				canvasContext: ctx,
+    				viewport: viewport,
+    			};
+
+    			page.render(renderContext);
+    		})
+    		.then(function () {
+    			console.log('Rendering complete');
+    		});
+    }
+
+    loadCertificate();
+</script>
