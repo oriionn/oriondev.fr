@@ -1,20 +1,60 @@
 ---
+// @ts-expect-error
+import { existsSync, mkdirSync, writeFileSync } from "fs";
+
 import { getCollection } from "astro:content";
 import { getLocale } from "../utils/translation";
 
 const { translation } = await getLocale(Astro);
-const friends = await getCollection("friends");
+const rawFriends = await getCollection("friends");
+
+const friends: Array<{
+    name: string;
+    url: string;
+    avatar: string;
+}> = [];
+
+for (const f of rawFriends) {
+    let avatar = f.data.image.value;
+    if (f.data.image.source === "github")
+        avatar = `https://avatars.githubusercontent.com/${avatar}`;
+
+    const friend = {
+        name: f.data.name,
+        url: f.data.url,
+        avatar: avatar
+    }
+
+    // @ts-expect-error
+    if (process.env.NODE_ENV === "production") {
+        try {
+            const dir = `dist/friends`;
+            const path = `${dir}/${friend.name}.png`;
+            if (!existsSync(dir)) mkdirSync(dir, { recursive: true });
+
+            const response = await fetch(friend.avatar);
+            const blob = await response.blob();
+            writeFileSync(path, new Uint8Array(await blob.arrayBuffer()));
+
+            friend.avatar = `/friends/${friend.name}.png`;
+        } catch (e) {
+            console.log(e);
+        }
+    }
+
+    friends.push(friend);
+}
 ---
 
 <section>
     <h2>{translation.friends.title}</h2>
     <div class="friends">
-        {friends.map(friend =>
-            <a href={friend.data.url} class="friend">
-                <img src={friend.data.image} alt={friend.data.name}></img>
-                <h3>{friend.data.name}</h3>
+        {friends.map(f => (
+            <a href={f.url} class="friend">
+                <img src={f.avatar} alt={f.name}></img>
+                <h3>{f.name}</h3>
             </a>
-        )}
+        ))}
     </div>
 </section>
 

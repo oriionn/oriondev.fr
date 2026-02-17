@@ -4,9 +4,12 @@ import { getLocale } from "../utils/translation";
 
 const { lang, translation } = await getLocale(Astro);
 
+const date = (d: { start: string, end: string | null }) =>
+    d.end !== null ? new Date(d.end):Date.now();
+
 let works = await getCollection("works")
 // @ts-expect-error
-works.sort((a, b) => (new Date(b.data.start) - new Date(a.data.start)));
+works.sort((a, b) => (date(b.data) - date(a.data)));
 const intl = translation.home.intl;
 
 const dateFormatter = new Intl.DateTimeFormat(intl, {

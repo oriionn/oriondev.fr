@@ -1,5 +1,8 @@
 {
     "name": "Vexcited",
-    "image": "https://avatars.githubusercontent.com/u/59152884?v=4",
+    "image": {
+        "source": "github",
+        "value": "Vexcited"
+    },
     "url": "https://vexcited.com"
 }

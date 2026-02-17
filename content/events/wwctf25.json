@@ -1,0 +1,13 @@
+{
+    "title": "WWCTF 2025",
+    "description": {
+        "fr": "Le WWCTF est un Capture The Flag mondial organisé par l'équipe World Wide Flags. Une compétition de 48 heures regroupant les meilleurs talents de la cybersécurité autour de challenges techniques innovants et stimulants.",
+        "en": "The WWCTF is a global Capture The Flag competition organised by the World Wide Flags team. A 48-hour competition bringing together the best cybersecurity talent to tackle innovative and stimulating technical challenges."
+    },
+    "tags": ["Capture The Flag"],
+    "certificate": {
+        "type": "pdf",
+        "name": "wwctf25"
+    },
+    "date": "2025-07-07T16:30:46.570Z"
+}
