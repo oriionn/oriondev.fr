@@ -1,0 +1,22 @@
+name: Deploy
+
+on:
+  push:
+    branches: [ v2 ]
+
+jobs:
+    build-deploy:
+        runs-on: ubuntu-latest
+        steps:
+        - uses: actions/checkout@v4
+        - uses: oven-sh/setup-bun@v2
+        - run: bun install
+        - run: bun run build
+        - name: Deploy via SSH
+          uses: appleboy/scp-action@v0.1.7
+          with:
+              host: ${{ secrets.SSH_HOST }}
+              username: ${{ secrets.SSH_USER }}
+              key: ${{ secrets.DEPLOY_KEY }}
+              source: "dist/*"
+              target: "/srv/oriondev.fr"
