@@ -17,9 +17,17 @@ jobs:
           run: bun --version
         - run: bun install
         - run: bun run build
+        - name: setup ssh
+          run: |
+            mkdir -p ~/.ssh
+            chmod 0700 ~/.ssh
+            echo "${{ secrets.DEPLOY_KEY }}" > ~/.ssh/id_ed25519
+            chmod 0600 ~/.ssh/id_ed25519
+            echo "${{ vars.SSH_HOST }} ${{ vars.SSH_PUB_KEY }}" >> ~/.ssh/known_hosts
+            chmod 0600 ~/.ssh/known_hosts
         - name: Deploy via SSH
           run: |
             mkdir -p ~/tmp_deploy
-            scp -i ${{ secrets.DEPLOY_KEY }} -r dist/* ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:~/tmp_deploy/
-            ssh -i ${{ secrets.DEPLOY_KEY }} ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} \
+            scp -i ~/.ssh/id_ed25519 -r dist/* ${{ vars.SSH_USER }}@${{ vars.SSH_HOST }}:~/tmp_deploy/
+            ssh -i ~/.ssh/id_ed25519 ${{ vars.SSH_USER }}@${{ vars.SSH_HOST }} \
               "sudo cp -r ~/tmp_deploy/* /srv/oriondev.fr/"
