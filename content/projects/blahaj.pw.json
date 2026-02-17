@@ -1,0 +1,13 @@
+{
+    "fr": {
+        "title": "blahaj.pw",
+        "description": "Un simple site où le but est de cliquer sur un blahaj :3"
+    },
+    "en": {
+        "title": "phoenix",
+        "description": "A simple site where the aim is to click on a blahaj :3"
+    },
+    "stacks": ["TypeScript", "Antispam"],
+    "github": "https://github.com/oriionn/blahaj-clicker",
+    "website": "https://blahaj.pw"
+}

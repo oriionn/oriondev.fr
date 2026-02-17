@@ -1,0 +1,13 @@
+{
+    "fr": {
+        "title": "phoenix",
+        "description": "Un petit outil écrit en C pour récupérer la date d'installation de votre système Linux"
+    },
+    "en": {
+        "title": "phoenix",
+        "description": "A small tool written in C to retrieve your Linux installation date"
+    },
+    "stacks": ["C", "Linux"],
+    "github": "https://github.com/oriionn/phoenix",
+    "website": null
+}

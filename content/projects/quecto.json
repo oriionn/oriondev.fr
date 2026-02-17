@@ -1,0 +1,13 @@
+{
+    "fr": {
+        "title": "Quecto",
+        "description": "Quecto est une solution universelle et open source qui vous permet de créer votre propre système de raccourcissement d'URL."
+    },
+    "en": {
+        "title": "Quecto",
+        "description": "Quecto is a universal, open-source solution that lets you create your own link shortening system."
+    },
+    "stacks": ["TypeScript", "Solid.js"],
+    "github": "https://github.com/oriionn/quecto",
+    "website": "https://quecto.oriondev.fr"
+}
