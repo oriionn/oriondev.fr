@@ -17,12 +17,14 @@ jobs:
           run: bun --version
         - run: bun install
         - run: bun run build
-        - name: setup ssh
+        - name: Setup SSH
           run: |
             mkdir -p ~/.ssh
             chmod 0700 ~/.ssh
             echo "${{ secrets.DEPLOY_KEY }}" > ~/.ssh/id_ed25519
             chmod 0600 ~/.ssh/id_ed25519
             ssh-keyscan -H ${{ vars.SSH_HOST }} >> ~/.ssh/known_hosts
+        - name: Install rSync
+          run: apt install rsync
         - name: Deploy via SSH
           run: rsync -az dist/* {{ vars.SSH_USER }}@{{ vars.SSH_HOST }}:/srv/oriondev.fr/
