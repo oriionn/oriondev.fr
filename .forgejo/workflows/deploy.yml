@@ -25,8 +25,4 @@ jobs:
             chmod 0600 ~/.ssh/id_ed25519
             ssh-keyscan -H ${{ vars.SSH_HOST }} >> ~/.ssh/known_hosts
         - name: Deploy via SSH
-          run: |
-            mkdir -p ~/tmp_deploy
-            scp -i ~/.ssh/id_ed25519 -r dist/* ${{ vars.SSH_USER }}@${{ vars.SSH_HOST }}:~/tmp_deploy/
-            ssh -i ~/.ssh/id_ed25519 ${{ vars.SSH_USER }}@${{ vars.SSH_HOST }} \
-              "sudo cp -r ~/tmp_deploy/* /srv/oriondev.fr/"
+          run: scp -r dist/* ${{ vars.SSH_USER }}@${{ vars.SSH_HOST }}:/srv/oriondev.fr/
