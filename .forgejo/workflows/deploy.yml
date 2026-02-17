@@ -23,8 +23,7 @@ jobs:
             chmod 0700 ~/.ssh
             echo "${{ secrets.DEPLOY_KEY }}" > ~/.ssh/id_ed25519
             chmod 0600 ~/.ssh/id_ed25519
-            echo "${{ vars.SSH_HOST }} ${{ vars.SSH_PUB_KEY }}" >> ~/.ssh/known_hosts
-            chmod 0600 ~/.ssh/known_hosts
+            ssh-keyscan -H ${{ vars.SSH_HOST }} >> ~/.ssh/known_hosts
         - name: Deploy via SSH
           run: |
             mkdir -p ~/tmp_deploy
