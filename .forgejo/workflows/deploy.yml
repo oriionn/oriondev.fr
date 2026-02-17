@@ -25,6 +25,6 @@ jobs:
             chmod 0600 ~/.ssh/id_ed25519
             ssh-keyscan -H ${{ vars.SSH_HOST }} >> ~/.ssh/known_hosts
         - name: Install rSync
-          run: apt install rsync
+          run: sudo apt install rsync
         - name: Deploy via SSH
           run: rsync -az dist/* {{ vars.SSH_USER }}@{{ vars.SSH_HOST }}:/srv/oriondev.fr/
