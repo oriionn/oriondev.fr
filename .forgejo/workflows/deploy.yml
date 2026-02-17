@@ -29,4 +29,4 @@ jobs:
               sudo apt update
               sudo apt install -y rsync
         - name: Deploy via SSH
-          run: rsync -e "ssh -i ~/.ssh/id_ed25519" -az --rsync-path="env -i PATH=/usr/bin:/bin rsync" dist/* ${{ vars.SSH_USER }}@${{ vars.SSH_HOST }}:/srv/oriondev.fr/
+          run: rsync -e "ssh -i ~/.ssh/id_ed25519" -az dist/* ${{ vars.SSH_USER }}@${{ vars.SSH_HOST }}:/srv/oriondev.fr/
