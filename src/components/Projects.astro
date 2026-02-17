@@ -16,9 +16,9 @@ let projects = await getCollection("projects");
                     <h3>{project.data[lang].title}</h3>
                     <p>{project.data[lang].description}</p>
                     <ul>
-                        {project.data.stacks.map((stack) => {
+                        {project.data.stacks.map((stack) =>
                             <li>{stack}</li>
-                        })}
+                        )}
                     </ul>
                 </div>
 
