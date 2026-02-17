@@ -1,7 +1,6 @@
 ---
 import { getCollection } from "astro:content";
 import { getLocale } from "../utils/translation";
-import { dateFormatter } from "../utils/formatter";
 
 const { translation, lang } = await getLocale(Astro);
 
@@ -26,9 +25,13 @@ const formatter = Intl.DateTimeFormat(translation.home.intl, {
                     <p>{event.data.description[lang]}</p>
                     <ul>
                         {event.data.certificate !== null ?
-                            <li>
-                                <a href={`/certificate/${event.data.certificate}`}>{translation.events.certificate}</a>
-                            </li>:null
+                            event.data.certificate.type === "obp" ?
+                                <li>
+                                    <a href={`/${lang}/obp/${event.data.certificate.name}`}>{translation.events.certificate}</a>
+                                </li>:<li>
+                                    <a href={`/certificate/${event.data.certificate.name}`}>{translation.events.certificate}</a>
+                                </li>
+                            :null
                         }
                         {event.data.tags.map(tag =>
                             <li>{tag}</li>

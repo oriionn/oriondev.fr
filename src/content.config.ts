@@ -28,6 +28,12 @@ const translationScheme = z.object({
     footer: z.object({
         designed: z.string(),
         copyright: z.string()
+    }),
+    obp: z.object({
+        issued_by: z.string(),
+        issued_on: z.string(),
+        field_of_study: z.string(),
+        view_on_obp: z.string()
     })
 })
 
@@ -93,7 +99,10 @@ const events = defineCollection({
             en: z.string()
         }),
         tags: z.array(z.string()),
-        certificate: z.string().nullable(),
+        certificate: z.object({
+            type: z.enum(["obp", "pdf"]),
+            name: z.string()
+        }).nullable(),
         date: z.coerce.date()
     })
 })

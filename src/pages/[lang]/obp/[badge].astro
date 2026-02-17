@@ -1,0 +1,128 @@
+---
+import CertifLayout from "../../../layouts/CertifLayout.astro";
+
+import type { GetStaticPaths } from 'astro';
+import { getCollection } from "astro:content";
+import { getLocale } from "../../../utils/translation";
+
+export const prerender = true;
+
+export const getStaticPaths = (async () => {
+    let events = await getCollection("events");
+    const badges = events
+        .filter((b) => b.data.certificate !== null && b.data.certificate.type === "obp")
+        .map(b => b.data.certificate!.name);
+
+    const translations = await getCollection("translations");
+	const langs = translations.map((translation: { id: string }) => translation.id);
+
+	const params: Array<{ badge: string; lang: string; }> = [];
+	badges.forEach(b => {
+	    langs.forEach(l => params.push({ badge: b, lang: l }));
+	})
+
+    return params.map(p => ({
+        params: p
+    }));
+}) satisfies GetStaticPaths;
+
+// @ts-expect-error
+const { translation, lang } = await getLocale(Astro);
+const { badge } = Astro.params;
+
+const formatter = Intl.DateTimeFormat(translation.home.intl, {
+    timeZone: "Europe/Paris",
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+});
+
+export const fetchInfo = async (b: string) => {
+    let res = await fetch(`https://openbadgepassport.com/app/obpv1/badge/info/${b}`);
+    let json = await res.json();
+
+    let content = json.content[0];
+    let { name, issuer_content_name, field_of_study } = content;
+    let issued_on = json.mtime * 1000;
+
+    return {
+        name,
+        issued_by: issuer_content_name,
+        issued_on: new Date(issued_on),
+        field_of_study
+    }
+}
+
+const data = await fetchInfo(badge);
+---
+
+<CertifLayout returnPath={`/${lang}`}>
+    <section>
+        <h2>{data.name}</h2>
+        <div class="issued">
+            <div class="info">
+                <h3>{translation.obp.issued_by}</h3>
+                <span>{data.issued_by}</span>
+            </div>
+            <div class="info">
+                <h3>{translation.obp.issued_on}</h3>
+                <span>{formatter.format(data.issued_on)}</span>
+            </div>
+        </div>
+        <div class="info">
+            <h3>{translation.obp.field_of_study}</h3>
+            <span>{data.field_of_study}</span>
+        </div>
+
+        <div class="action">
+            <a href={`https://openbadgepassport.com/app/badge/info/${badge}`} target="_blank">{translation.obp.view_on_obp}</a>
+        </div>
+    </section>
+</CertifLayout>
+
+<style>
+    section {
+        margin-top: 90px;
+    }
+
+    h2 {
+        margin-bottom: 15px;
+    }
+
+    .info {
+        padding: 15px;
+    }
+
+    .issued {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .issued .info {
+        width: 50%;
+    }
+
+    .action {
+        display: flex;
+        flex-direction: row-reverse;
+
+        width: 100%;
+    }
+
+    a {
+        white-space: nowrap;
+        text-decoration: none;
+
+        padding: 8px 10px;
+        border-radius: 5px;
+        background: var(--primary-foreground);
+        color: var(--primary-background);
+    }
+
+    @media (max-width: 780px) {
+        .issued {
+            flex-direction: column;
+        }
+    }
+</style>

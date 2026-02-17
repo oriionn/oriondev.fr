@@ -1,0 +1,13 @@
+{
+    "title": "Passe Ton Hack d’Abord 2026",
+    "description": {
+        "fr": "Passe ton Hack d'Abord est une compétition de cybersécurité de type CTF (Capture The Flag) organisée chaque année en France. Cette compétition vise à initier et former les étudiants et passionnés de cybersécurité à travers des défis pratiques couvrant divers domaines tels que la cryptographie, le reverse engineering, l'exploitation web et la forensique. Elle sert de plateforme pédagogique pour développer les compétences techniques et promouvoir la sensibilisation à la cybersécurité auprès des participants.",
+        "en": "Passe ton Hack d'Abord is a cybersecurity CTF (Capture The Flag) competition organized annually in France. This competition aims to introduce and train students and cybersecurity enthusiasts through practical challenges covering various domains such as cryptography, reverse engineering, web exploitation, and forensics. It serves as an educational platform to develop technical skills and promote cybersecurity awareness among participants."
+    },
+    "tags": ["Capture The Flag"],
+    "certificate": {
+        "type": "obp",
+        "name": "1086846"
+    },
+    "date": "2026-01-07T16:30:46.570Z"
+}

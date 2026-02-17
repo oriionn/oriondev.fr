@@ -37,5 +37,11 @@
     "footer": {
         "designed": "Design & Developed by ",
         "copyright": "All rights reserved."
+    },
+    "obp": {
+        "issued_by": "Issued by",
+        "issued_on": "Issued on",
+        "field_of_study": "Field of study",
+        "view_on_obp": "View on OBP"
     }
 }

@@ -1,0 +1,116 @@
+---
+import { MoveLeft, Moon, Sun } from "@lucide/astro";
+import Layout from './Layout.astro';
+
+interface Props {
+    returnPath?: string;
+}
+
+const { returnPath = "/" } = Astro.props;
+---
+
+<Layout>
+    <nav>
+        <div class="navigation">
+            <a href={returnPath} id="returnBtn">
+                <MoveLeft size={30} id="return" />
+            </a>
+
+            <button id="toggle_theme">
+                <Moon size={30} class="moon" />
+                <Sun size={30} class="sun" />
+            </button>
+        </div>
+    </nav>
+
+    <slot />
+</Layout>
+
+<style>
+    nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+
+        width: 100dvw;
+        display: flex;
+        justify-content: center;
+        border-bottom: 1px var(--secondary-background) solid;
+    }
+
+    .navigation {
+        width: 50%;
+        padding: 20px 0;
+
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    @media (max-width: 1350px) {
+        .navigation {
+            width: 75%;
+        }
+    }
+
+    @media (max-width: 600px) {
+        .navigation {
+            width: calc(100% - 40px);
+        }
+    }
+
+    #toggle_theme {
+        margin-left: 10px;
+        background: none;
+        border: none;
+        cursor: pointer;
+    }
+
+    #toggle_theme svg {
+        stroke: var(--primary-foreground);
+    }
+
+    body.dark .moon {
+        display: none;
+    }
+
+    body.dark .sun {
+        display: block;
+    }
+
+    body:not(.dark) .moon {
+        display: block;
+    }
+
+    body:not(.dark) .sun {
+        display: none;
+    }
+</style>
+
+<script>
+    const toggleThemeBtn = document.getElementById("toggle_theme");
+    const returnBtn = document.getElementById("returnBtn") as HTMLLinkElement;
+
+    window.addEventListener("load", () => {
+        let storage = localStorage.getItem("theme");
+
+        if (!storage) {
+            let defaultDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)');
+            storage = (defaultDark && defaultDark.matches) ? "dark":"light";
+            localStorage.setItem("theme", storage);
+        }
+
+        if (storage === "dark") document.body.classList.add("dark");
+
+        let storedLanguage = localStorage.getItem("language");
+        if (storedLanguage != null && ["en", "fr"].includes(storedLanguage)) {
+            returnBtn.href = `/${storedLanguage}`;
+        }
+    });
+
+    toggleThemeBtn?.addEventListener("click", () => {
+        document.body.classList.toggle("dark");
+        localStorage.setItem("theme", document.body.classList.contains("dark") ? "dark":"light");
+    });
+</script>
