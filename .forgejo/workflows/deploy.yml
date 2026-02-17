@@ -25,3 +25,4 @@ jobs:
               key: ${{ secrets.DEPLOY_KEY }}
               source: "dist/*"
               target: "/srv/oriondev.fr"
+              debug: true
