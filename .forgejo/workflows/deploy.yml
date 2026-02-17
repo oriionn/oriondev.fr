@@ -13,7 +13,7 @@ jobs:
         - run: bun install
         - run: bun run build
         - name: Deploy via SSH
-          uses: appleboy/scp-action@v0.1.7
+          uses: https://github.com/appleboy/scp-action
           with:
               host: ${{ secrets.SSH_HOST }}
               username: ${{ secrets.SSH_USER }}
