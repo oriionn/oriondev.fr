@@ -25,4 +25,4 @@ jobs:
             chmod 0600 ~/.ssh/id_ed25519
             ssh-keyscan -H ${{ vars.SSH_HOST }} >> ~/.ssh/known_hosts
         - name: Deploy via SSH
-          run: scp -r dist/* ${{ vars.SSH_USER }}@${{ vars.SSH_HOST }}:/srv/oriondev.fr/
+          run: scp -o StrictHostKeyChecking=no -r dist/* ${{ vars.SSH_USER }}@${{ vars.SSH_HOST }}:/srv/oriondev.fr/
