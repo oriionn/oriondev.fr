@@ -2,7 +2,6 @@
 import CertifLayout from "../../layouts/CertifLayout.astro";
 
 import type { GetStaticPaths } from 'astro';
-// @ts-expect-error
 import { readdirSync } from "fs";
 
 export const prerender = true;
@@ -20,7 +19,7 @@ export const getStaticPaths = (async () => {
 const { certificate } = Astro.params;
 ---
 
-<CertifLayout>
+<CertifLayout title={"Certificate"}>
     <canvas id="certificate" class={`/certificates/${certificate}.pdf`}></canvas>
 </CertifLayout>
 

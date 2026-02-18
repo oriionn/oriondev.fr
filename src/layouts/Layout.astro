@@ -1,12 +1,52 @@
+---
+import { getEntry } from "astro:content";
+import removeMd from "remove-markdown";
+import { getLocale } from "../utils/translation";
+
+interface Props {
+    title: string;
+    description?: boolean;
+}
+
+const { title, description = false } = Astro.props;
+
+let desc = "";
+if (description) {
+    const { translation, lang } = await getLocale(Astro);
+    const bioRaw = await getEntry("bio", lang);
+    const bio = removeMd(bioRaw!.body!);
+
+    desc = bio.split(".")[0] + ".";
+}
+---
+
 <!doctype html>
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
+		<link rel="icon" href="/favicon.png" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Orion • Home</title>
+		<title>Orion • {title}</title>
+
+		<meta property="og:title" content={`Orion • ${title}`} />
+		{description ? (
+            <meta property="og:description" content={desc} />
+		):null}
+
+        <meta property="og:image" content="/avatar.jpg" />
+        <meta property="og:image:width" content="256" />
+        <meta property="og:image:height" content="256" />
+
+        <meta property="og:type" content="website" />
+        <meta property="og:locale" content="fr_FR" />
+
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:title" content={`Orion • ${title}`} />
+        {description ? (
+            <meta name="twitter:description" content={desc} />
+        ):null}
+        <meta name="twitter:image" content="/avatar.jpg" />
 	</head>
 	<body>
         <div class="content">

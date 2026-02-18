@@ -12,6 +12,7 @@ import Footer from "../../components/Footer.astro";
 import Layout from '../../layouts/Layout.astro';
 import { getCollection } from "astro:content";
 import type { GetStaticPaths } from "astro";
+import { getLocale } from "../../utils/translation";
 
 export const prerender = true;
 
@@ -23,10 +24,11 @@ export const getStaticPaths = (async () => {
     }));
 }) satisfies GetStaticPaths;
 
-const { lang } = Astro.params;
+// @ts-expect-error
+const { translation, lang } = await getLocale(Astro);
 ---
 
-<Layout>
+<Layout title={translation.tabs.home} description={true}>
     <div id="userlang" class={lang}></div>
     <Navbar />
     <Profile />

@@ -43,5 +43,9 @@
         "issued_on": "Délivré le",
         "field_of_study": "Domaines",
         "view_on_obp": "Voir sur OBP"
+    },
+    "tabs": {
+        "home": "Accueil",
+        "certificate": "Certificat"
     }
 }

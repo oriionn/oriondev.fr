@@ -34,6 +34,10 @@ const translationScheme = z.object({
         issued_on: z.string(),
         field_of_study: z.string(),
         view_on_obp: z.string()
+    }),
+    tabs: z.object({
+        home: z.string(),
+        certificate: z.string()
     })
 })
 

@@ -56,7 +56,7 @@ export const fetchInfo = async (b: string) => {
 const data = await fetchInfo(badge);
 ---
 
-<CertifLayout returnPath={`/${lang}`}>
+<CertifLayout returnPath={`/${lang}`} title={`${translation.tabs.certificate} • ${data.name}`}>
     <section>
         <h2>{data.name}</h2>
         <div class="issued">

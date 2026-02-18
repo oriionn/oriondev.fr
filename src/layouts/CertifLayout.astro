@@ -4,12 +4,13 @@ import Layout from './Layout.astro';
 
 interface Props {
     returnPath?: string;
+    title: string;
 }
 
-const { returnPath = "/" } = Astro.props;
+const { returnPath = "/", title } = Astro.props;
 ---
 
-<Layout>
+<Layout title={title}>
     <nav>
         <div class="navigation">
             <a href={returnPath} id="returnBtn">

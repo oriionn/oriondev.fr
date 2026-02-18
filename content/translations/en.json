@@ -43,5 +43,9 @@
         "issued_on": "Issued on",
         "field_of_study": "Field of study",
         "view_on_obp": "View on OBP"
+    },
+    "tabs": {
+        "home": "Home",
+        "certificate": "Certificate"
     }
 }

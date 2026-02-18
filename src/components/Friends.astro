@@ -1,5 +1,4 @@
 ---
-// @ts-expect-error
 import { existsSync, mkdirSync, writeFileSync } from "fs";
 
 import { getCollection } from "astro:content";
@@ -25,7 +24,6 @@ for (const f of rawFriends) {
         avatar: avatar
     }
 
-    // @ts-expect-error
     if (process.env.NODE_ENV === "production") {
         try {
             const dir = `dist/friends`;
