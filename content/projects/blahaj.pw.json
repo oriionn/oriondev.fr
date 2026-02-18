@@ -8,6 +8,6 @@
         "description": "A simple site where the aim is to click on a blahaj :3"
     },
     "stacks": ["TypeScript", "Antispam"],
-    "github": "https://github.com/oriionn/blahaj-clicker",
+    "github": "https://git.oriondev.fr/orion/blahaj-clicker",
     "website": "https://blahaj.pw"
 }

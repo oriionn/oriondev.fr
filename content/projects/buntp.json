@@ -8,6 +8,6 @@
         "description": "Just a small reimplementation of the NTP protocol with Bun, just for fun."
     },
     "stacks": ["TypeScript", "Network"],
-    "github": "https://github.com/oriionn/buntp",
+    "github": "https://git.oriondev.fr/orion/buntp",
     "website": "https://npmx.dev/package/buntp"
 }

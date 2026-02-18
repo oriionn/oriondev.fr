@@ -8,6 +8,6 @@
         "description": "A small app that lets you check the Louis Marchal High School canteen menu with total peace of mind."
     },
     "stacks": ["Flutter", "Reverse engineering"],
-    "github": "https://github.com/oriionn/llmenu",
+    "github": "https://git.oriondev.fr/orion/llmenu",
     "website": null
 }

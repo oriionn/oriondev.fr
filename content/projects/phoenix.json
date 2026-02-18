@@ -8,6 +8,6 @@
         "description": "A small tool written in C to retrieve your Linux installation date"
     },
     "stacks": ["C", "Linux"],
-    "github": "https://github.com/oriionn/phoenix",
+    "github": "https://git.oriondev.fr/orion/phoenix",
     "website": null
 }
