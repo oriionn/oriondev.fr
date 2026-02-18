@@ -15,18 +15,20 @@ jobs:
             echo "$HOME/.bun/bin" >> $GITHUB_PATH
         - name: Check Bun
           run: bun --version
-        - run: bun install
-        - run: bun run build
-        - name: Setup SSH
-          run: |
-            mkdir -p ~/.ssh
-            chmod 0700 ~/.ssh
-            echo "${{ secrets.DEPLOY_KEY }}" > ~/.ssh/id_ed25519
-            chmod 0600 ~/.ssh/id_ed25519
-            ssh-keyscan -H ${{ vars.SSH_HOST }} >> ~/.ssh/known_hosts
+        - name: Install Dependencies
+          run: bun install
+        - name: Build Website
+          run: bun run build
+        - name: Install SSH key
+          uses: https://github.com/shimataro/ssh-key-action@v2
+          with:
+            key: ${{ secrets.DEPLOY_KEY }}
+            name: id_ed25519
+            known_hosts: ${{ secrets.KNOWN_HOSTS }}
+            if_key_exists: replace
         - name: Install rSync
           run: |
-              sudo apt update
-              sudo apt install -y rsync
+              sudo apt-get update
+              sudo apt-get install -y rsync
         - name: Deploy via SSH
           run: rsync -e "ssh -i ~/.ssh/id_ed25519" -az dist/* ${{ vars.SSH_USER }}@${{ vars.SSH_HOST }}:/srv/oriondev.fr/
