@@ -32,4 +32,4 @@ jobs:
               sudo apt-get update
               sudo apt-get install -y rsync
         - name: Deploy via SSH
-          run: rsync -e "ssh -i ~/.ssh/id_ed25519" -az dist/* ${{ vars.SSH_USER }}@${{ vars.SSH_HOST }}:/
+          run: rsync -e "ssh -i ~/.ssh/id_ed25519" -az dist/* ${{ vars.SSH_USER }}@${{ vars.SSH_HOST }}:/oriondev.fr
