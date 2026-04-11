@@ -35,6 +35,7 @@ jobs:
           run: git clone ${{ vars.DEPLOY_REPOSITORY }} deploy
         - name: Copy build output and commit
           run: |
+              rm -rf .git
               rsync -av --delete dist/ deploy/
               git config user.email "ci@oriondev.fr"
               git config user.name "Forgejo CI"
