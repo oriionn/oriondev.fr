@@ -34,7 +34,7 @@ jobs:
         - name: Copy build output and commit
           run: |
               git clone ${{ vars.DEPLOY_REPOSITORY }} _deploy
-              ls -a _deploy
+              cp -r _deploy/.git dist/
               rsync -av --delete dist/ _deploy/
               cd _deploy
               git config user.email "ci@oriondev.fr"
