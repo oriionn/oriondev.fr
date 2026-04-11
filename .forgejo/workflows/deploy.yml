@@ -36,8 +36,9 @@ jobs:
               git clone ${{ vars.DEPLOY_REPOSITORY }} _deploy
               rsync -av --delete dist/ _deploy/
               cd _deploy
+              ls -a
               git config user.email "ci@oriondev.fr"
               git config user.name "Forgejo CI"
               git add .
               git commit -m "deploy: $(date -u +%Y-%m-%dT%H:%M:%SZ) @ ${{ github.sha }}" || exit 0
-              git push
+              # git push
