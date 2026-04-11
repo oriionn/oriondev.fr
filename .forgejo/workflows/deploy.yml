@@ -31,11 +31,9 @@ jobs:
           run: |
               sudo apt-get update
               sudo apt-get install -y rsync
-        - name: Clone deploy repository
-          run: git clone ${{ vars.DEPLOY_REPOSITORY }} deploy
         - name: Copy build output and commit
           run: |
-              rm -rf .git
+              git clone ${{ vars.DEPLOY_REPOSITORY }} deploy
               rsync -av --delete dist/ deploy/
               cd deploy
               git config user.email "ci@oriondev.fr"
