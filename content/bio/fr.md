@@ -1,3 +1,3 @@
 Salut ! Je m'appelle **Orion** et je suis un développeur **autodidacte**, passionné d'informatique depuis mon enfance. J'ai commencé à apprendre la **programmation** dès l'âge de 8 ans, acquérant progressivement des connaissances et une plus grande **rigueur** dans mon travail. Je m'intéresse à de nombreux domaines de l'informatique, comme la cybersécurité et l'administration système, mais je me concentre principalement sur le **développement**.
 
-Je suis actuellement lycéen en Alsace, avec les spécialités **NSI (Numérique et Sciences Informatiques)** et **Mathématiques**, ainsi que l'option **Mathématiques Expertes**.
+Je suis actuellement étudiant en Alsace à l'**IUT Robert Schuman** en **BUT Informatique**.
